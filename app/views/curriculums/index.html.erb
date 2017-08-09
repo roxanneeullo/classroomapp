@@ -1,0 +1,42 @@
+
+<h1>Curriculums</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @curriculums.each do |curriculum| %>
+      <tr>
+        <td><%= curriculum.course.name%></td>
+				<td><%= curriculum.subject.name%></td>
+        
+				<% if can? :destroy, @curriculum %>
+        	<td><%= link_to 'Destroy', curriculum, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      	<% end %>
+			</tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<%= form_for(@curriculum) do |f| %>
+  
+	
+<h3>new curriculum</h3>
+  <div class="field">
+    <%= f.label :course_id %>		<%= f.collection_select(:course_id, Course.order('name asc'), :id, :name, { :prompt => 'Select Course', :required => true }, class: "form-control")  %>
+  </div>
+  <div class="field">
+    <%= f.label :subject_id %>
+		<%= f.collection_select(:subject_id, Subject.order('name asc'), :id, :name, { :prompt => 'Select Subject' , :required => true}, { class: "form-control" })  %>
+		
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+	<% end %>

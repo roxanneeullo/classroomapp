@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>ID:</strong>
+  <%= @teacher.user_id %>
+</p>
+<p>
+  <strong>First name:</strong>
+  <%= @teacher.user.first_name %>
+</p><p>
+  <strong>Last Name:</strong>
+  <%= @teacher.user.last_name %>
+</p><p>
+  <strong>Department:</strong>
+  <%= @teacher.department.name %>
+</p>
+<p>
+  <strong>Department:</strong>
+  <%= @teacher.department_id %>
+</p>
+<p>
+  <strong>Advisory Block:</strong>
+  <%= @teacher.block.name %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @teacher.status %>
+</p>
+ 
+ <p><Strong>Subjects:</strong>
+<table>	
+	 <% @teacher.subjects.each do |subject| %>
+	 <tr>
+        <td><%= subject.name %></td>
+			
+					</tr>
+		    <% end %>
+</table>
+
+
+</p>
+<%= link_to 'Edit', edit_teacher_path(@teacher) %> |
+<%= link_to 'Back', teachers_path %>

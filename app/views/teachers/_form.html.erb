@@ -1,0 +1,36 @@
+<%= form_for(teacher) do |f| %>
+  <% if teacher.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(teacher.errors.count, "error") %> prohibited this teacher from being saved:</h2>
+
+      <ul>
+      <% teacher.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :user_id %>
+		<%= f.collection_select(:user_id, User.order('username asc'), :id, :username, { :prompt => 'Select User' }, class: "form-control")  %>
+  </div>
+
+  <div class="field">
+    <%= f.label :department_id %>
+		<%= f.collection_select(:department_id, Department.order('name asc'), :id, :name, { :prompt => 'Select Department' }, class: "form-control")  %>
+  </div>
+  <div class="field">
+    <%= f.label :block_id %>
+		<%= f.collection_select(:block_id, Block.order('name asc'), :id, :name, { :prompt => 'Select Block' }, class: "form-control")  %>
+  </div>
+  <div class="field">
+    <%= f.label :status %>
+		<%= f.select(:status, options_for_select(['Fulltime', 'Parttime']), 
+		     				  {},class: "chzn-select") %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

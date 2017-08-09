@@ -1,0 +1,22 @@
+
+<p>
+  <strong>Name:</strong>
+  <%= @department.name %>
+</p>
+
+<p>
+  <strong>Teachers:</strong>
+ 
+</p>
+
+<table>	
+	 <% @department.teachers.each do |teacher| %>
+	 <tr>
+        <td><%= teacher.user.first_name %>&nbsp;<%= teacher.user.last_name %></td>
+			
+					</tr>
+		    <% end %>
+</table>
+
+<%= link_to 'Edit', edit_department_path(@department) %> |
+<%= link_to 'Back', departments_path %>

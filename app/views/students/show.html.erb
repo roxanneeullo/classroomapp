@@ -1,0 +1,57 @@
+
+<p>
+  <strong>User ID:</strong>
+  <%= @student.user_id %>
+</p>
+<p>
+  <strong>Student ID:</strong>
+  <%= @student.id %>
+</p>
+
+<p>
+  <strong> Name:</strong>
+  <%= @student.user.first_name %> &nbsp;<%= @student.user.last_name %>
+</p>
+<p>
+  <strong>Course:</strong>
+  <%= @student.course.name %>
+</p>
+<p>
+  <strong>Block:</strong>
+  <%= @student.block.name %>
+</p>
+<p>
+  <strong>Year level:</strong>
+  <%= @student.year_level %>
+</p>
+<p>subjects</p>
+<table>
+	<% @student.course.subjects.each do |subject| %>
+		<tr>
+  		<td><%= subject.name %></td>
+			<td><%= subject.id %></td>
+		</tr>
+	<% end %>
+</table>
+
+<p>sections</p>
+<table>
+	<% @student.sections.each do |section| %>
+		<tr>
+  		<td><%= section.name %></td>
+		</tr>
+	<% end %>
+</table>
+
+<p>grades</p>
+<table>
+	<% @student.grades.each do |grade| %>
+		<tr>
+  		<td><%= grade.score %></td>
+			<td><%= grade.section.name %></td>
+		</tr>
+	<% end %>
+</table>
+
+<%= link_to 'Edit', edit_student_path(@student) %> |
+<%= link_to 'Back', students_path %>

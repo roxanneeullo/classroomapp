@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ClassroomApp</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+	</head>
+
+  <body>
+		
+		<!-- Navigation -->
+		<header class="navbar navbar-fixed-top navbar-inverse">
+			<div class="container">
+		    <%= image_tag "/images/classroomapp.png", :class => "brand" %>
+			</div>
+		</header>		
+		<% if user_signed_in? %>
+		<!-- Navigation -->
+		<div class="container-fluid">
+		  <div class="row">
+		    <div class="col-sm-3 col-lg-2">
+	  			<nav class="navbar navbar-default navbar-fixed-side" role="navigation">
+	  				<div class="container">
+        			<div class="navbar-header">
+            		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                	<span class="sr-only">Toggle navigation</span>
+                	<span class="icon-bar"></span>
+                	<span class="icon-bar"></span>
+                	<span class="icon-bar"></span>
+            		</button>
+            		<a class="navbar-brand <%= 'active' if current_page?(root_path) %>" href=<%= root_path %>>Classroom App</a>
+       				 </div>	<!-- header -->
+						
+					   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	 		    	   <ul class="nav navbar-nav">
+							  <% if can? :update, @user %>
+	 		      		  <li class=<%= 'active' if current_page?(users_path) %>>
+									<%= link_to 'Users', users_path, method: :get %></li>
+								<% end %>
+								<% if can? :update, @student %>
+		 		      		<li class=<%= 'active' if current_page?(students_path) %>>
+									<%= link_to 'Students', students_path, method: :get %></li>
+								<% end %>
+								<% if can? :update, @course %>
+	 		        		<li class=<%= 'active' if current_page?(courses_path) %>>
+									<%= link_to 'Courses', courses_path, method: :get %></li>
+								<% end %>
+								<% if can? :update, @department %>
+		 		      		<li class=<%= 'active' if current_page?(departments_path) %>>
+									<%= link_to 'Departments', departments_path, method: :get %></li>
+								<% end %>
+								<% if can? :update, @teacher %>
+		 		      		<li class=<%= 'active' if current_page?(teachers_path) %>>
+									<%= link_to 'Teachers', teachers_path, method: :get %></li>	
+								<% end %>
+			 		    	<% if can? :update, @subject %>
+									<li class=<%= 'active' if current_page?(subjects_path) %>>
+									<%= link_to 'Subjects', subjects_path, method: :get %></li>
+								<% end %>	
+								<% if can? :update, @curriculum %>	
+				 		  		<li class=<%= 'active' if current_page?(curriculums_path) %>>
+									<%= link_to 'Curriculums', curriculums_path, method: :get %></li>
+				 		  	<% end %>
+								<% if can? :update, @teaching_load %>
+									<li class=<%= 'active' if current_page?(teaching_loads_path) %>>
+									<%= link_to 'Loads', teaching_loads_path, method: :get %></li>
+								<% end %>
+								<% if can? :update, @block %>	
+					 				<li class=<%= 'active' if current_page?(blocks_path) %>>
+									<%= link_to 'Blocks', blocks_path, method: :get %></li>
+								<% end %>
+								<% if can? :update, @section %>	
+					 				<li class=<%= 'active' if current_page?(sections_path) %>>
+										<%= link_to 'Sections', sections_path, method: :get %></li>
+								<% end %>	
+								<% if can? :update, @class_list %>
+					 	  		<li class=<%= 'active' if current_page?(class_lists_path) %>>
+									<%= link_to 'Class List', class_lists_path, method: :get %></li>
+								<% end %>	
+								<% if can? :update, @activity %>
+						 			<li class=<%= 'active' if current_page?(activities_path) %>>
+									<%= link_to 'Activities', activities_path, method: :get %></li>
+								<% end %>
+								<% if can? :update, @grade %>
+									<li class=<%= 'active' if current_page?(grades_path) %>>
+									<%= link_to 'Grades', grades_path, method: :get %></li>
+								<% end %>
+								<li class=<%= 'active' if current_page?(edit_user_path(current_user.id)) %>>
+								<a href="/users/<%= current_user.id %>">
+									<%= current_user.first_name %> 
+								</a></li>
+		 						<li><%= link_to 'Logout', destroy_user_session_path, 
+									data: { confirm: "Are you sure you want to logout?" }, method: :delete %> </li>
+	 		     	 	</ul>		<!--end list-->
+	 					</div><!--nav bar collpase-->
+				<% end %>
+	   	</div><!--container-->
+			</div><!--nav def-->
+	 	</nav><!--default side-->
+  
+		<!-- SIDEBAR---------
+		<div class="container-fluid">
+		  <div class="row">
+    
+		    <div class="col-md-3 sidebar">
+		      Sidebar
+		    </div>
+    
+		    <div class="col-md-9 col-md-offset-3 content">
+		       <%= yield %>
+		    </div>
+    
+		  </div>
+		</div>
+		<!-- ALERTS -->
+			
+			
+			<div class="col-sm-9 col-lg-10">
+				
+					<div class="container" role="alert" id="success-alert">
+						<% flash.each do |key, value| %>
+						  <% alert_class = case key
+						                   when "notice" then "success"
+						                   when "alert" then "danger"
+						                   else key
+						                   end %>
+						  <%= content_tag( :div, class: "alert alert-#{alert_class}" )do %>
+						    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+									<span aria-hidden="true">&times;</span></button>
+						    <%= value %>
+						  <% end %>
+						<% end %>
+					</div>
+					
+	     <%= yield %>
+		   <footer>
+		       <div class="row">
+		           <div class="col-lg-12">
+								  <hr/>
+		               <p>Copyright &copy; My Awesome Site 2017</p>
+		           </div>
+		       </div>
+		   </footer>
+		 </div><!--col-->
+		 </div><!--row-->
+		 
+		 </div><!--fluid-->
+		
+	   
+  </body>
+	
+ 
+	
+</html>
+
+

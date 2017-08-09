@@ -1,0 +1,43 @@
+<h1>Class List</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @class_lists.each do |class_list| %>
+      <tr>
+        <td><%= class_list.student.user.first_name%>&nbsp;<%= class_list.student.user.last_name%></td>
+				<td><%= class_list.section.name%></td>
+				
+				<% if can? :destroy, @class_list %>
+        	<td><%= link_to 'Destroy', class_list, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      	<% end %>
+			</tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<%= form_for(@class_list) do |f| %>
+  
+	
+<h3>new class list</h3>
+  <div class="field">
+    <%= f.label :student_id %>		
+		<%= f.collection_select(:student_id, Student.order('id asc'), :id, :id, { :prompt => 'Select Student' }, class: "form-control", id: "info") %>
+		<label class="hidden_option"><%= :student_id %></label>
+		
+  </div>
+  <div class="field">
+    <%= f.label :section_id %>
+		<%= f.collection_select(:section_id, Section.order('name asc'), :id, :name, { :prompt => 'Select Section' }, class: "form-control")  %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+	<% end %>

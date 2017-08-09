@@ -1,0 +1,44 @@
+<p>
+  <strong>Block:</strong>
+	<%= @block.name %>
+</p>
+
+<div class="container">
+	<div class="row col-md-5 col-md-offset-3 custyle">
+		<table class="table table-striped custab"> 
+  		<thead>
+    		<tr>
+					<th>Students in Block:<%= @block.name %></th>
+      		<th colspan="1"></th>
+    		</tr>
+  		</thead>
+  		<tbody>
+   			<% if @block.students.each_with_index do |student| %>
+				<div class="col-md-3">
+      			<tr>
+							<td>
+								<div class="card hovercard2">
+				      		<div class="cardheader">
+									</div>
+									<div class="avatar">
+										<a href="/users/<%= student.id %>"><%= image_tag student.user.avatar.url(:thumb) %></a>
+									</div>
+								</div>
+							</td>
+        			<td>
+								<a class="post" href="/users/<%= student.id %>"><%= student.user.first_name %>&nbsp;<%= student.user.last_name%></a>
+							</td>
+								
+      			</tr>
+						<% end.empty? %>
+						<td><strong>No users.</strong></td>
+					<% end %>
+				</div>
+  		</tbody>
+		</table>
+		<%= link_to 'Edit', section_path %> |
+		<%= link_to 'Back', :back %>
+	</div>
+</div>
+
+

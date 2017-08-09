@@ -1,0 +1,37 @@
+<%= form_for(student) do |f| %>
+  <% if student.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(student.errors.count, "error") %> prohibited this student from being saved:</h2>
+
+      <ul>
+      <% student.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :user_id %>
+		<%= f.collection_select(:user_id, User.order('username asc'), :id, :username, { :prompt => 'Select User' }, class: "form-control")  %>
+  </div>
+
+  <div class="field">
+    <%= f.label :course_id %>
+		<%= f.collection_select(:course_id, Course.order('name asc'), :id, :name, { :prompt => 'Select Course' }, class: "form-control")  %>
+  </div>
+
+  <div class="field">
+    <%= f.label :year_level %>
+		<%= f.select(:year_level, options_for_select([1, 2, 3, 4]), 
+		     				  {},class: "chzn-select") %>
+  </div>
+  <div class="field">
+    <%= f.label :block_id %>
+		<%= f.collection_select(:block_id, Block.order('name asc'), :id, :name, { :prompt => 'Select Block' }, class: "form-control")  %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

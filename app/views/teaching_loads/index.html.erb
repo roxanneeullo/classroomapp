@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Teaching Load</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @teaching_loads.each do |teaching_load| %>
+      <tr>
+        <td><%= teaching_load.teacher.user.first_name%>&nbsp;<%= teaching_load.teacher.user.first_name%></td>
+				<td><%= teaching_load.subject.name%></td>
+        
+				<% if can? :destroy, @teaching_loads %>
+        	<td><%= link_to 'Destroy', teaching_load, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      	<% end %>
+			</tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+
+<%= form_for(@teaching_load) do |f| %>
+	
+<h3>new load</h3>
+  <div class="field">
+    <%= f.label :teacher_id %>		
+		<%= f.collection_select(:teacher_id, Teacher.order('id asc'), :id, :id, { :prompt => 'Select Teacher' }, class: "form-control")  %>
+  </div>
+  <div class="field">
+    <%= f.label :subject_id %>
+		<%= f.collection_select(:subject_id, Subject.order('name asc'), :id, :name, { :prompt => 'Select Subject' }, class: "form-control")  %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+	<% end %>

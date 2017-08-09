@@ -1,0 +1,48 @@
+<div class="container">
+	<div class="row">
+		<div class="col-lg-4 col-sm-6 col-md-offset-2">
+    	<div class="card hovercard">
+      	<div class="cardheader">
+				</div>
+
+				<div class="avatar">
+					<%= image_tag @user.avatar.url(:thumb) %>
+				</div>
+				
+				<div class="title">
+  				<%= @user.first_name %>&nbsp;<%= @user.last_name %>
+				</div>
+				
+				<div class="description">
+   					<strong>user ID:</strong>
+  				 	<%= @user.id%>
+				</div>
+				<div class="description">
+  				<strong>Username:</strong>
+ 				  <%= @user.username %>
+				</div>
+				
+				<div class="description">
+ 					<strong>Gender:</strong>
+ 				 	<%= @user.gender %>
+			 	</div>
+			 
+			 	<div class="description">
+ 			   	<strong>Birthday:</strong>
+ 			 	 	<%= @user.birthday %>
+		 	 </div>
+
+			 <div class="description">
+  			 <strong>Contact number:</strong>
+  			 <%= @user.contact_number %>
+			 </div>
+
+ 			<% if can? :update, @user %>
+				<%= link_to 'Edit', edit_user_registration_path(@user) %> |
+			<% end %>
+			<%= link_to 'Back', users_path %>
+			</div>
+		</div>
+	</div>
+</div>
+	
