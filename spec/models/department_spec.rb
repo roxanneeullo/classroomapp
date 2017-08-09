@@ -13,7 +13,7 @@ RSpec.describe Department, type: :model do
   it "is valid with a name" do
     department = Department.new(
       name: "School of Information Technology",
-      )
+    )
     expect(department).to be_valid 
   end
   

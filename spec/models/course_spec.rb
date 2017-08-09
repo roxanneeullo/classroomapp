@@ -12,7 +12,7 @@ RSpec.describe Course, type: :model do
     expect(relation.macro).to eq :has_many
   end
   
-  it 'has belongs to department' do
+  it 'belongs to department' do
     relation = described_class.reflect_on_association(:department)
     expect(relation.macro).to eq :belongs_to
   end

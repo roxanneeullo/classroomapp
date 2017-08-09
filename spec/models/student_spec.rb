@@ -1,8 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Student, type: :model do
-  #validates :user_id, uniqueness: true
-  #validates :course, presence: true
   
   it 'has many curriculums' do
     relation = described_class.reflect_on_association(:curriculums)
@@ -41,34 +39,30 @@ RSpec.describe Student, type: :model do
   
   it "is valid with a user, course, block, and year level" do 
     User.create(
-    first_name: "admin",
-            last_name: "admin",
-            username: "admin1",
-            gender: "female",
-            birthday: 1991-07-02,
-            contact_number: 639201206270,
-            email: "usermail@gmail.com",
-            password: "AbCdEfGh9876",
-            password_confirmation: "AbCdEfGh9876"
-      )
-    Course.new(
-      id: 1,
+      first_name: "admin",
+      last_name: "admin",
+      username: "admin1",
+      gender: "female",
+      birthday: 1991-07-02,
+      contact_number: 639201206270,
+      email: "usermail@gmail.com",
+      password: "AbCdEfGh9876",
+      password_confirmation: "AbCdEfGh9876"
+    )
+    Course.create(
       name: "Computer Science"
     )
-    
-    Block.new(
-      id: 1,
+    Block.create(
       name: "AC1"
     )
-    
     student = Student.new(
-    user_id: 1,
+      user_id: 1,
       course_id: 1,
       block_id: 1,
       year_level: 1
-  )
-  expect(student).to be_valid end
-  
+      )
+    expect(student).to be_valid 
+  end
   it "is invalid without a year level" do
     student = Student.new(year_level: nil)
     student.valid?

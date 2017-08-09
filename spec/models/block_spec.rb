@@ -9,14 +9,12 @@ RSpec.describe Block, type: :model do
     relation = described_class.reflect_on_association(:teacher)
     expect(relation.macro).to eq :has_one
   end
-  
   it "is valid with a name" do
     block = Block.new(
       name: "CS1",
       )
     expect(block).to be_valid 
   end
-  
   it "is invalid without a name" do
     block = Block.new(name: nil)
     block.valid?

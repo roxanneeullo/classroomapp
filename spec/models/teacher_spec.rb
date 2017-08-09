@@ -2,26 +2,24 @@ require 'rails_helper'
 
 RSpec.describe Teacher, type: :model do
   it "is valid with a user, department, block, and status" do 
-    User.new(
-    first_name: "teacher",
-            last_name: "teacher",
-            username: "teacher1",
-            gender: "female",
-            birthday: 1991-07-02,
-            contact_number: 639201206270,
-            email: "usermail@gmail.com",
-            password: "AbCdEfGh9876",
-            password_confirmation: "AbCdEfGh9876"
-      )
-    Department.new(
+    User.create(
+      first_name: "teacher",
+      last_name: "teacher",
+      username: "teacher1",
+      gender: "female",
+      birthday: 1991-07-02,
+      contact_number: 639201206270,
+      email: "usermail@gmail.com",
+      password: "AbCdEfGh9876",
+      password_confirmation: "AbCdEfGh9876"
+    )
+    Department.create(
       name: "School of Information Technology"
     )
-    
-    Block.new(
+    Block.create(
       name: "AC1"
     )
-    
-    teacher =Teacher.new(
+    teacher = Teacher.new(
       user_id: 1,
       department_id: 1,
       block_id: 1,
@@ -29,24 +27,6 @@ RSpec.describe Teacher, type: :model do
     )
     expect(teacher).to be_valid 
   end
-  
-  it "is invalid with duplicate block" do
-    Teacher.create(
-    user_id: 1,
-    department_id: 1,
-    block_id: 1,
-    status: "Full Time"
-      )
-      teacher = Teacher.new(
-      user_id: 2,
-      department_id: 1,
-      block_id: 1,
-      status: "Full Time"
-        )
-        teacher.valid?
-        expect(teacher.errors[:block]).to include("Oops")
-  end
-  
   it "is invalid without a department" do
     teacher = Teacher.new(department: nil)
     teacher.valid?

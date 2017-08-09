@@ -14,16 +14,17 @@ RSpec.describe User, type: :model do
   
   it "is valid with a first name, last name, email, and password" do
     user = User.new(
-    first_name: "admin",
-            last_name: "admin",
-            username: "admin1",
-            gender: "female",
-            birthday: 1991-07-02,
-            contact_number: 639201206270,
-            email: "usermail@gmail.com",
-            password: "AbCdEfGh987",
-            password_confirmation: "AbCdEfGh9876"
-      )
+      first_name: "admin",
+      last_name: "admin",
+      username: "admin1",
+      gender: "female",
+      birthday: 1991-07-02,
+      contact_number: 639201206270,
+      email: "usermail@gmail.com",
+      password: "AbCdEfGh9876",
+      password_confirmation: "AbCdEfGh9876",
+      roles_mask: 1
+    )
     expect(user).to be_valid 
   end
   
@@ -59,56 +60,59 @@ RSpec.describe User, type: :model do
   
   it "is invalid with duplicate username" do
     User.create(
-    first_name: "admin",
-            last_name: "admin",
-            username: "admin1",
-            gender: "female",
-            birthday: 1991-07-02,
-            contact_number: 639201206270,
-            email: "usermail@gmail.com",
-            password: "AbCdEfGh9876",
-            password_confirmation: "AbCdEfGh9876"
-      )
-      user = User.new(
       first_name: "admin",
-              last_name: "admin",
-              username: "admin1",
-              gender: "female",
-              birthday: 1991-07-02,
-              contact_number: 639201206270,
-              email: "usermail@gmail.com",
-              password: "AbCdEfGh9876",
-              password_confirmation: "AbCdEfGh9876"
-        )
-        user.valid?
-        expect(user.errors[:username]).to include("has already been taken")
+      last_name: "admin",
+      username: "admin1",
+      gender: "female",
+      birthday: 1991-07-02,
+      contact_number: 639201206270,
+      email: "usermail@gmail.com",
+      password: "AbCdEfGh9876",
+      password_confirmation: "AbCdEfGh9876",
+      roles_mask: 1
+    )
+    user = User.new(
+      first_name: "admin",
+      last_name: "admin",
+      username: "admin1",
+      gender: "female",
+      birthday: 1991-07-02,
+      contact_number: 639201206270,
+      email: "usermail@gmail.com",
+      password: "AbCdEfGh9876",
+      password_confirmation: "AbCdEfGh9876",
+      roles_mask: 1
+    )
+    user.valid?
+    expect(user.errors[:username]).to include("has already been taken")
   end
   
   it "is invalid with duplicate email" do
     User.create(
-    first_name: "admin",
-            last_name: "admin",
-            username: "admin1",
-            gender: "female",
-            birthday: 1991-07-02,
-            contact_number: 639201206270,
-            email: "usermail@gmail.com",
-            password: "AbCdEfGh9876",
-            password_confirmation: "AbCdEfGh9876"
-      )
-      user = User.new(
       first_name: "admin",
-              last_name: "admin",
-              username: "admin1",
-              gender: "female",
-              birthday: 1991-07-02,
-              contact_number: 639201206270,
-              email: "usermail@gmail.com",
-              password: "AbCdEfGh9876",
-              password_confirmation: "AbCdEfGh9876"
-        )
-        user.valid?
-        expect(user.errors[:email]).to include("has already been taken")
-  end
-  
+      last_name: "admin",
+      username: "admin1",
+      gender: "female",
+      birthday: 1991-07-02,
+      contact_number: 639201206270,
+      email: "usermail@gmail.com",
+      password: "AbCdEfGh9876",
+      password_confirmation: "AbCdEfGh9876",
+      roles_mask: 1
+    )
+    user = User.new(
+      first_name: "admin",
+      last_name: "admin",
+      username: "admin1",
+      gender: "female",
+      birthday: 1991-07-02,
+      contact_number: 639201206270,
+      email: "usermail@gmail.com",
+      password: "AbCdEfGh9876",
+      password_confirmation: "AbCdEfGh9876",
+      roles_mask: 1
+    )
+    user.valid?
+    expect(user.errors[:email]).to include("has already been taken")
+  end  
 end
