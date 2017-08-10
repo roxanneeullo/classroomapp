@@ -34,7 +34,7 @@ class ApplicationController < ActionController::Base
         if current_user.has_role? :admin
           admin_dashboard_path
         else
-          user_path(resource)
+          root_path
         end
     end
 end

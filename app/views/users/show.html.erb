@@ -1,3 +1,15 @@
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link active" href="/users/<%= current_user.id %>"><i class="fa fa-pie-chart"></i>Basic</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="<%= student_path(current_user.id) %>"><i class="fa fa-user-o"></i>Student</a>
+  </li>
+</ul>
+
+
+
+
 <div class="container">
 	<div class="row">
 		<div class="col-lg-4 col-sm-6 col-md-offset-2">

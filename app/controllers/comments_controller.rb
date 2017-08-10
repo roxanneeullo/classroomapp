@@ -20,7 +20,7 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @comment = @activity.comments.find(params[:id])
+    
     @comment.destroy
     flash[:success] = "Comment deleted :("
     redirect_to :back

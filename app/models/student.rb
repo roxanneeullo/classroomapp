@@ -1,6 +1,6 @@
 class Student < ApplicationRecord
   
-  belongs_to :user, optional: true
+  belongs_to :user
   belongs_to :course, optional: true
   belongs_to :block, optional: true
   has_many :curriculums
