@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   resources :sections
   resources :class_lists
   resources :activities
+  resources :comments
   resources :grades
   resources :home
   

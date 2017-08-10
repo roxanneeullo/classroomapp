@@ -35,64 +35,114 @@
 						
 					   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	 		    	   <ul class="nav navbar-nav">
-							  <% if can? :update, @user %>
-	 		      		  <li class=<%= 'active' if current_page?(users_path) %>>
-									<%= link_to 'Users', users_path, method: :get %></li>
+								 
+								 
+					       <div id="MainMenu">
+					         <div class="list-group panel">
+					           <a href="#demo3" class="list-group-item list-group-item-item" data-toggle="collapse" data-parent="#MainMenu">Users</a><i class="fa fa-caret-down"></i>	
+					           <div class="collapse" id="demo3">
+											  <% if can? :update, @user %>
+					            <a href="/users" class="list-group-item">Users
+								<i class="fa fa-user-circle" aria-hidden="true"></i></a>
 								<% end %>
+								
 								<% if can? :update, @student %>
-		 		      		<li class=<%= 'active' if current_page?(students_path) %>>
-									<%= link_to 'Students', students_path, method: :get %></li>
+							<a href="/students" class="list-group-item">Students
+							</a>
+							<% end %>
+							
+							<% if can? :update, @teacher %>
+								<a href="/teachers" class="list-group-item">Teachers
+								</a>
 								<% end %>
-								<% if can? :update, @course %>
-	 		        		<li class=<%= 'active' if current_page?(courses_path) %>>
-									<%= link_to 'Courses', courses_path, method: :get %></li>
-								<% end %>
+							
+							</div>
+							
+								<a href="#demo4" class="list-group-item list-group-item" data-toggle="collapse" data-parent="#MainMenu">School</a>
+								<div class="collapse" id="demo4">
+								
 								<% if can? :update, @department %>
-		 		      		<li class=<%= 'active' if current_page?(departments_path) %>>
-									<%= link_to 'Departments', departments_path, method: :get %></li>
+								<a href="/departments" class="list-group-item">
+		 		      		Departments
+								</a>
 								<% end %>
-								<% if can? :update, @teacher %>
-		 		      		<li class=<%= 'active' if current_page?(teachers_path) %>>
-									<%= link_to 'Teachers', teachers_path, method: :get %></li>	
-								<% end %>
-			 		    	<% if can? :update, @subject %>
-									<li class=<%= 'active' if current_page?(subjects_path) %>>
-									<%= link_to 'Subjects', subjects_path, method: :get %></li>
-								<% end %>	
-								<% if can? :update, @curriculum %>	
-				 		  		<li class=<%= 'active' if current_page?(curriculums_path) %>>
-									<%= link_to 'Curriculums', curriculums_path, method: :get %></li>
-				 		  	<% end %>
-								<% if can? :update, @teaching_load %>
-									<li class=<%= 'active' if current_page?(teaching_loads_path) %>>
-									<%= link_to 'Loads', teaching_loads_path, method: :get %></li>
+							
+								<% if can? :update, @course %>
+								<a href="/courses" class="list-group-item">
+	 		        		Courses
+								</a>
 								<% end %>
 								<% if can? :update, @block %>	
-					 				<li class=<%= 'active' if current_page?(blocks_path) %>>
-									<%= link_to 'Blocks', blocks_path, method: :get %></li>
+								<a href="/blocks" class="list-group-item">
+					 				Blocks
+								</a>
+								<% end %>
+			 		    	<% if can? :update, @subject %>
+								<a href="/subjects" class="list-group-item">
+									Subjects
+								</a>
+								<% end %>	
+								<% if can? :update, @curriculum %>	
+								<a href="/curriculums" class="list-group-item">
+				 		  		Curriculums
+								</a>
+				 		  	<% end %>
+							</div>
+							
+							
+		            <a href="#demo5" class="list-group-item list-group-item" data-toggle="collapse" data-parent="#MainMenu">Class</a>
+		             <div class="collapse" id="demo5">
+								<% if can? :update, @teaching_load %>
+								<a href="/teaching_loads" class="list-group-item">
+									Loads
+								</a>
+								<% end %>
+								<% if can? :update, @class_list %>
+								<a href="/class_lists" class="list-group-item">
+					 	  		ClassList
+								</a>
 								<% end %>
 								<% if can? :update, @section %>	
-					 				<li class=<%= 'active' if current_page?(sections_path) %>>
-										<%= link_to 'Sections', sections_path, method: :get %></li>
+								<a href="/sections" class="list-group-item">
+					 				Sections</a>
 								<% end %>	
-								<% if can? :update, @class_list %>
-					 	  		<li class=<%= 'active' if current_page?(class_lists_path) %>>
-									<%= link_to 'Class List', class_lists_path, method: :get %></li>
-								<% end %>	
+							
+							</div>
+								
+								
+							
+		            <a href="#demo6" class="list-group-item list-group-item" data-toggle="collapse" data-parent="#MainMenu">Grades</a>
+		             <div class="collapse" id="demo6">
+								
 								<% if can? :update, @activity %>
-						 			<li class=<%= 'active' if current_page?(activities_path) %>>
-									<%= link_to 'Activities', activities_path, method: :get %></li>
+								<a href="/activities" class="list-group-item">
+						 			Activities
+								</a>
 								<% end %>
+								<a href="/rades" class="list-group-item">
 								<% if can? :update, @grade %>
-									<li class=<%= 'active' if current_page?(grades_path) %>>
-									<%= link_to 'Grades', grades_path, method: :get %></li>
+									Grades
+								</a>
 								<% end %>
+							</div>
+								
+		            <a href="#demo7" class="list-group-item list-group-item" data-toggle="collapse" data-parent="#MainMenu">Profile</a>
+		             <div class="collapse" id="demo7">
+								
+								<a href="#" class="list-group-item">
 								<li class=<%= 'active' if current_page?(edit_user_path(current_user.id)) %>>
 								<a href="/users/<%= current_user.id %>">
 									<%= current_user.first_name %> 
 								</a></li>
+							</a>
+							<a href="#" class="list-group-item">
 		 						<li><%= link_to 'Logout', destroy_user_session_path, 
 									data: { confirm: "Are you sure you want to logout?" }, method: :delete %> </li>
+								</a>
+								</div>
+								
+									</div>
+										</div>
 	 		     	 	</ul>		<!--end list-->
 	 					</div><!--nav bar collpase-->
 				<% end %>

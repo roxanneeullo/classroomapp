@@ -8,18 +8,18 @@ class ActivitiesController < ApplicationController
   end
 
   def show
+   # @comments = Comment.all
     @comments = Comment.all
-    @comment = Comment.new
-    
-   # @comment = current_user.comments.create(comment_params)
+     
+    #@comment = current_user.comments.create(comment_params)
 
-    #  if @comment.save
-    #    redirect_to :back
+     # if @comment.save
+      #  redirect_to :back
        # flash[:notice] = "Post created!"
-   #   else
+    #  else
         
-    #    redirect_to :back
-        #flash[:notice] = "Post cannot be blank!"
+     #  redirect_to :back
+      #  flash[:notice] = "Post cannot be blank!"
     #  end
   end
 
@@ -64,10 +64,7 @@ class ActivitiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def activity_params
-      params.require(:activity).permit(:activity_type, :content, :section_id, :teacher_id, comments_attributes: [:user_id, :context, :section_id, :activity_id])
+      params.require(:activity).permit(:activity_type, :content, :section_id, :teacher_id)
     end
-    
-    def comment_params
-      params.require(:comment).permit(:user_id, :context, :section_id, :activity_id)
-    end
+ 
 end

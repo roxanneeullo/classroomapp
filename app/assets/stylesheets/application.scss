@@ -16,6 +16,7 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import 'bootstrap/variables';
 
 
 body {
@@ -48,7 +49,6 @@ footer {
     margin: 50px 0;
 }
 
-@import 'bootstrap/variables';
 
 .navbar-fixed-side {
   @media (max-width: $grid-float-breakpoint) {
@@ -467,4 +467,12 @@ footer {
 .card.hovercard .bottom {
     padding: 0 20px;
     margin-bottom: 17px;
+}
+
+.list-group.panel > .list-group-item {
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 0px;
+}
+.list-group-submenu {
+  margin-left:0px;
 }

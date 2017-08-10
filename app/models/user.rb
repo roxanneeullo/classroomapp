@@ -22,6 +22,7 @@ class User < ApplicationRecord
   
   accepts_nested_attributes_for :students
   accepts_nested_attributes_for :teachers
+  accepts_nested_attributes_for :comments
   
   ROLES = %i[admin teacher student]
 

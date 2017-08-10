@@ -71,3 +71,5 @@ gem 'activeadmin'
 gem 'paperclip'
 
 gem 'factory_girl'
+
+gem 'font-awesome-rails'

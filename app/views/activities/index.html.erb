@@ -15,7 +15,7 @@
 				<td><%= activity.content%></td>
 				<td><%= activity.section.name%></td>
 				<td><%= activity.teacher.user.first_name%></td>
-				<td><%= link_to 'Show', activity %></td>
+				<td><%= link_to 'Show', comments_path(:id => activity.id)%></td>
         
 				<% if can? :destroy, @activities %>
         	<td><%= link_to 'Destroy', activity, method: :delete, data: { confirm: 'Are you sure?' } %></td>
