@@ -3,11 +3,9 @@
     <a class="nav-link active" href="/users/<%= current_user.id %>"><i class="fa fa-pie-chart"></i>Basic</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="<%= student_path(current_user.id) %>"><i class="fa fa-user-o"></i>Student</a>
+    <a class="nav-link" href="<%= student_path(user_id: current_user.id) %>"><i class="fa fa-user-o"></i>Student</a>
   </li>
 </ul>
-
-
 
 
 <div class="container">

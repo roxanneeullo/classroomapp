@@ -7,9 +7,9 @@ class StudentsController < ApplicationController
     @students = Student.all
   end
 
-  # GET /students/1
-  # GET /students/1.json
+  
   def show
+    
    # @user = User.find(params[:id])
   # @student = Student.where(user_id: params[:user_id])
   end
@@ -53,8 +53,7 @@ class StudentsController < ApplicationController
     end
   end
 
-  # DELETE /students/1
-  # DELETE /students/1.json
+  
   def destroy
     @student.destroy
     respond_to do |format|

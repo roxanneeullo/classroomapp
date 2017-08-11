@@ -13,4 +13,13 @@ ActiveAdmin.register Student do
 #   permitted
 # end
 
+index do
+  selectable_column
+  id_column
+  column :user_id
+  column :course_id
+  column :year_level
+  
+  actions
+end
 end

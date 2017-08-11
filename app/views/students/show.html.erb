@@ -1,6 +1,19 @@
-
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link active" href="/users/<%= current_user.id %>"><i class="fa fa-pie-chart"></i>Basic</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="<%= student_path(user_id: current_user.id) %>"><i class="fa fa-user-o"></i>Student</a>
+  </li>
+</ul>
+<div class="container">
+	<div class="row">
+		<div class="col-lg-4 col-sm-6 col-md-offset-2">
+    	<div class="card hovercard">
+      	
 <p>
   <strong>User ID:</strong>
+	
   <%= @student.user_id %>
 </p>
 <p>
@@ -55,3 +68,7 @@
 
 <%= link_to 'Edit', edit_student_path(@student) %> |
 <%= link_to 'Back', students_path %>
+			</div>
+		</div>
+	</div>
+</div>
