@@ -1,5 +1,17 @@
-<p id="notice"><%= notice %></p>
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link active" href="/users/<%= current_user.id %>"><i class="fa fa-pie-chart"></i>Basic</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="<%= teacher_path(user_id: current_user.id) %>"><i class="fa fa-user-o"></i>Teacher</a>
+  </li>
+</ul>
 
+
+<div class="container">
+	<div class="row">
+		<div class="col-lg-4 col-sm-6 col-md-offset-2">
+    	<div class="card hovercard">
 <p>
   <strong>ID:</strong>
   <%= @teacher.user_id %>
@@ -42,3 +54,7 @@
 </p>
 <%= link_to 'Edit', edit_teacher_path(@teacher) %> |
 <%= link_to 'Back', teachers_path %>
+	</div>
+		</div>
+	</div>
+</div>

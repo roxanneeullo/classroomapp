@@ -2,9 +2,15 @@
   <li class="nav-item">
     <a class="nav-link active" href="/users/<%= current_user.id %>"><i class="fa fa-pie-chart"></i>Basic</a>
   </li>
+	<% if current_user.roles_mask == 4%>
   <li class="nav-item">
     <a class="nav-link" href="<%= student_path(user_id: current_user.id) %>"><i class="fa fa-user-o"></i>Student</a>
   </li>
+	<% elsif current_user.roles_mask == 2%>
+  <li class="nav-item">
+    <a class="nav-link" href="<%= teacher_path(user_id: current_user.id) %>"><i class="fa fa-user-o"></i>Teacher</a>
+  </li>
+	<% end %>
 </ul>
 
 

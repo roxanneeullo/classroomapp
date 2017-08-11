@@ -64,7 +64,8 @@ class TeachersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_teacher
-      @teacher = Teacher.find(params[:id])
+      # @student = Student.where(user_id: params[:user_id]).first
+      @teacher = Teacher.where(user_id: params[:user_id]).first
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
