@@ -1,0 +1,24 @@
+
+<div class="container">
+	<div class="row">
+		<div class="col-lg-4 col-sm-6 col-md-offset-2">
+    	<div class="card hovercard">
+      	
+<p>
+  <strong>Sections:</strong>
+	<table>	
+		 <% @teacher.sections.each do |section| %>
+		 <tr>
+	  		<td> <a href="<%= section_path(section.id) %>"> <%= section.name %></a></td>
+				<td><%= section.schedule %></td>
+			
+						</tr>
+			    <% end %>	
+	</table>
+	
+</p>
+
+			</div>
+		</div>
+	</div>
+</div>

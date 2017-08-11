@@ -34,6 +34,12 @@ Rails.application.routes.draw do
     #patch "student_users", to: "users/students#update"
   end
   
+  get "/students-subjects" => "students#subject"
+  get "/students-schedule" => "students#schedule"
+  get "/students-grades" =>"students#grade"
+  get "/teachers-subjects" => "teachers#subject"
+  get "/teachers-sections" => "teachers#section"
+  
   root to: "home#index"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

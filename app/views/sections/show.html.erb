@@ -1,9 +1,12 @@
-<p>
-  <strong>Class:</strong>
-	<%= @section.name %>
-</p>
+
 <div class="container">
-	<div class="row col-md-5 col-md-offset-3 custyle">
+	<div class="row">
+		<p>
+		  <strong>Class:</strong>
+			<%= @section.name %>
+		</p>
+	</div>
+	<div class="row">
 		<table class="table table-striped custab"> 
   		<thead>
     		<tr>
@@ -13,27 +16,21 @@
   		</thead>
   		<tbody>
    			<% if @section.activities.each_with_index do |activity| %>
-				<div class="col-md-3">
-      			<tr>
-							<td>
+      		<tr>
+						<td>
 							
-        			<td>
-								<%= activity.activity_type %>
-							</td>
-							<td><%= activity.content%>
-								
-      			</tr>
-						<% end.empty? %>
-						<td><strong>No users.</strong></td>
-					<% end %>
-						</div>
-		  		</tbody>
-				</table>
-				
-
-
-<div class="container">
-	<div class="row col-md-5 col-md-offset-3 custyle">
+							<a href="<%= comments_path(:id => activity.id) %>"><%= activity.activity_type %></a>
+						</td>
+						<td><%= activity.content%>
+      		</tr>
+				<% end.empty? %>
+					<td><strong>No activities.</strong></td>
+				<% end %>
+		  </tbody>
+		</table>
+	</div>
+	
+	<div class="row">
 		<table class="table table-striped custab"> 
   		<thead>
     		<tr>
@@ -43,31 +40,27 @@
   		</thead>
   		<tbody>
    			<% if @section.students.each_with_index do |student| %>
-				<div class="col-md-3">
-      			<tr>
-							<td>
-								<div class="card hovercard2">
-				      		<div class="cardheader">
-									</div>
-									<div class="avatar">
-										<a href="/users/<%= student.id %>"><%= image_tag student.user.avatar.url(:thumb) %></a>
-									</div>
+					<tr>
+						<td>
+							<div class="card hovercard2">
+				      	<div class="cardheader">
 								</div>
-							</td>
-        			<td>
-								<a class="post" href="/users/<%= student.id %>"><%= student.user.first_name %>&nbsp;<%= student.user.last_name%></a>
-							</td>
-								
-      			</tr>
-						<% end.empty? %>
-						<td><strong>No users.</strong></td>
-					<% end %>
-				</div>
-  		</tbody>
-		</table>
-		<%= link_to 'Edit', section_path %> |
-		<%= link_to 'Back', :back %>
-	</div>
+								<div class="avatar">
+									<a href="/students/<%= student.id %>"><%= image_tag student.user.avatar.url(:thumb) %></a>
+								</div>
+							</div>
+						</td>
+        		<td>
+							<a class="post" href="/students/<%= student.id %>"><%= student.user.first_name %>&nbsp;<%= student.user.last_name%></a>
+						</td>
+					</tr>
+				<% end.empty? %>
+					<td><strong>No users.</strong></td>
+				<% end %>
+			</div>
+  	</tbody>
+	</table>
+</div>
 </div>
 
 

@@ -9,6 +9,10 @@ RSpec.describe Department, type: :model do
     relation = described_class.reflect_on_association(:teachers)
     expect(relation.macro).to eq :has_many
   end
+  it 'has many students' do
+    relation = described_class.reflect_on_association(:students)
+    expect(relation.macro).to eq :has_many
+  end
   
   it "is valid with a name" do
     department = Department.new(

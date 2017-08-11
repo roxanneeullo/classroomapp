@@ -9,11 +9,20 @@ class StudentsController < ApplicationController
 
   
   def show
-    
-   # @user = User.find(params[:id])
-  # @student = Student.where(user_id: params[:user_id])
+  
+  end
+  
+  def subject
+      @student = Student.where(user_id: params[:user_id]).first
   end
 
+  def schedule
+      @student = Student.where(user_id: params[:user_id]).first
+  end
+  
+  def grade
+    @student = Student.where(user_id: params[:user_id]).first
+  end
   # GET /students/new
   def new
     @student = Student.new
@@ -62,14 +71,14 @@ class StudentsController < ApplicationController
     end
   end
 
-  private
+ 
     # Use callbacks to share common setup or constraints between actions.
     def set_student
       @student = Student.where(user_id: params[:user_id]).first
     end
-
+ private
     # Never trust parameters from the scary internet, only allow the white list through.
     def student_params
-      params.require(:student).permit(:user_id, :course_id, :year_level, :block_id)
+      params.require(:student).permit(:user_id, :course_id, :year_level, :block_id, :department_id)
     end
 end

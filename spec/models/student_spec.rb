@@ -37,6 +37,11 @@ RSpec.describe Student, type: :model do
     expect(relation.macro).to eq :belongs_to
   end
   
+  it 'belongs to department' do
+    relation = described_class.reflect_on_association(:department)
+    expect(relation.macro).to eq :belongs_to
+  end
+  
   it "is valid with a user, course, block, and year level" do 
     User.create(
       first_name: "admin",

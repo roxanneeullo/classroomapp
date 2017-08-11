@@ -1,0 +1,24 @@
+
+<div class="container">
+	<div class="row">
+		<div class="col-lg-4 col-sm-6 col-md-offset-2">
+    	<div class="card hovercard">
+      	
+<p>
+  <strong>Grades:</strong>
+	
+	<table>
+		<% @student.grades.each do |grade| %>
+			<tr>
+	  		<td><%= grade.score %></td>
+				<td><%= grade.section.name %></td>
+			</tr>
+		<% end %>
+	</table>
+	
+</p>
+
+			</div>
+		</div>
+	</div>
+</div>

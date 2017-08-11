@@ -12,7 +12,13 @@ class TeachersController < ApplicationController
   def show
   end
 
-  # GET /teachers/new
+  def subject
+   @teacher = Teacher.where(user_id: params[:user_id]).first
+  end
+  def section
+     @teacher = Teacher.where(user_id: params[:user_id]).first
+    end
+  
   def new
     @teacher = Teacher.new
   end
