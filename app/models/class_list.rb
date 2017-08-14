@@ -4,4 +4,6 @@ class ClassList < ApplicationRecord
   
   validates :student_id, presence: true
   validates :section_id, presence: true
+  
+  validates_uniqueness_of   :student_id, scope: :section_id
 end

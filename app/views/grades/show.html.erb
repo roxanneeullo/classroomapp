@@ -1,0 +1,22 @@
+<div class="container">
+<table>
+  <thead>
+    <tr>
+      <th>Activity Type</th>
+			<th></th>
+			<th>Grade</th>
+     
+    </tr>
+  </thead>
+
+  <tbody>
+		<% @student.grades.each do |grade| %>
+			<tr>
+	  		<td><%= grade.activity.activity_type %></td>
+				<td><%= grade.activity.content %></td>
+				<td><%= grade.score %></td>
+			</tr>
+		<% end %>
+  </tbody>
+</table>
+</div>

@@ -6,6 +6,13 @@
 			<%= @section.name %>
 		</p>
 	</div>
+	
+	<% if current_user.roles_mask==4%>
+	<div class="row">
+	<%= link_to 'View Grade', grade_path(:user_id => current_user.id, :section_id => @section.id ) %>
+</div>
+
+<% end %>
 	<div class="row">
 		<table class="table table-striped custab"> 
   		<thead>

@@ -8,7 +8,9 @@ class Section < ApplicationRecord
   
   validates :subject_id, presence: true
   validates :teacher_id, presence: true
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: true
   validates :semester, presence: true
-  validates :schedule, presence: true
+  validates :schedule, presence: true, uniqueness: true
+  
+  validates_uniqueness_of   :subject_id, scope: :teacher_id
 end

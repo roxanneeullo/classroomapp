@@ -13,7 +13,7 @@
   </div>
   <div class="field">
     <%= f.label :activity_id %>		
-		<%= f.collection_select(:activity_id, Activity.order('content asc'), :id, :content, { :prompt => 'Select Activity' }, class: "form-control")  %>
+		<%= f.collection_select(:activity_id, Activity.where(section_id: params[:section_id]), :id, :content, { :prompt => 'Select Activity' }, class: "form-control")  %>
   </div>
   
   <div class="actions">

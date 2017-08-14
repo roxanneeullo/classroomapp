@@ -9,7 +9,8 @@ class GradesController < ApplicationController
   # GET /courses/1
   # GET /courses/1.json
   def show
-     @grade = Grade.find(params[:id])
+   #  @grade = Grade.find(params[:id])
+     @student = Student.where(user_id: params[:user_id]).first
   end
 
   # GET /courses/1/edit
