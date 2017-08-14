@@ -1,18 +1,4 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
 
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
 Course.delete_all
 Department.delete_all
 Subject.delete_all
@@ -21,7 +7,6 @@ Block.delete_all
 User.delete_all
 Student.delete_all
 Teacher.delete_all
-
 
 #6 courses
   Course.create(name: 'Computer Science' )
@@ -165,8 +150,7 @@ end
   
   User.create(first_name: first_name, last_name: last_name, email: email, gender: gender, 
     username: username, password: password, birthday: birthday, contact_number: contact_number,
-    roles_mask: roles_mask )
-    
+    roles_mask: roles_mask ) 
   
   department_id = 1
   status        = ["Full Time", "Part Time"].shuffle.first
@@ -174,7 +158,6 @@ end
   block_id      = i
   Teacher.create(user_id: user_id, department_id: department_id, status: status, block_id: block_id)
 end
-
 
 # 8 SOM teachers
 (1..8).each do |i|
@@ -199,7 +182,6 @@ end
   block_id      = i + 8
   Teacher.create(user_id: user_id, department_id: department_id, status: status, block_id: block_id)
 end
-
 
 # 8 SOBM teachers
 (1..8).each do |i|
@@ -248,12 +230,113 @@ end
   user_id        = i + 29
   block_id      = i
   department_id = 1
+  
   Student.create(user_id: user_id, course_id: course_id, year_level: year_level, block_id: block_id, department_id: department_id)
+
 end  
   
+# IT students
+(1..4).each do |i|
+  first_name     = Faker::Name.first_name
+  last_name      = Faker::Name.last_name
+  email          = Faker::Internet.free_email("#{first_name} #{last_name}")
+  username       = ["stud",first_name.split.map(&:chr)*'', last_name].join
+  gender         = ["Male", "Female"].shuffle.first
+  birthday       = Faker::Date.birthday(16, 30)
+  contact_number = Faker::PhoneNumber.cell_phone
+  roles_mask     = 4
+  password       = username
 
-  # IT students
-  (1..4).each do |i|
+  User.create(first_name: first_name, last_name: last_name, email: email, gender: gender, 
+      username: username, password: password, birthday: birthday, contact_number: contact_number,
+      roles_mask: roles_mask )
+  course_id      = 2
+  year_level     = i
+  user_id        = i + 33
+  block_id      = i + 4
+  department_id = 1
+  
+  Student.create(user_id: user_id, course_id: course_id, year_level: year_level, block_id: block_id, department_id: department_id)
+ 
+end 
+  
+
+# Nursing students
+(1..4).each do |i|
+  first_name     = Faker::Name.first_name
+  last_name      = Faker::Name.last_name
+  email          = Faker::Internet.free_email("#{first_name} #{last_name}")
+  username       = ["stud",first_name.split.map(&:chr)*'', last_name].join
+  gender         = ["Male", "Female"].shuffle.first
+  birthday       = Faker::Date.birthday(16, 30)
+  contact_number = Faker::PhoneNumber.cell_phone
+  roles_mask     = 4
+  password       = username
+  
+  User.create(first_name: first_name, last_name: last_name, email: email, gender: gender, 
+      username: username, password: password, birthday: birthday, contact_number: contact_number,
+      roles_mask: roles_mask )
+    
+  course_id      = 3
+  year_level     = i
+  user_id        = i + 37
+  block_id      = i + 8
+  department_id = 2
+
+  Student.create(user_id: user_id, course_id: course_id, year_level: year_level, block_id: block_id, department_id: department_id)
+end
+
+# PT students
+(1..4).each do |i|
+  first_name     = Faker::Name.first_name
+  last_name      = Faker::Name.last_name
+  email          = Faker::Internet.free_email("#{first_name} #{last_name}")
+  username       = ["stud",first_name.split.map(&:chr)*'', last_name].join
+  gender         = ["Male", "Female"].shuffle.first
+  birthday       = Faker::Date.birthday(16, 30)
+  contact_number = Faker::PhoneNumber.cell_phone
+  roles_mask     = 4
+  password       = username
+  
+  User.create(first_name: first_name, last_name: last_name, email: email, gender: gender, 
+       username: username, password: password, birthday: birthday, contact_number: contact_number,
+       roles_mask: roles_mask )
+    
+  course_id      = 4
+  year_level     = i
+  user_id        = i + 41
+  block_id      = i + 12
+  department_id = 2
+
+  Student.create(user_id: user_id, course_id: course_id, year_level: year_level, block_id: block_id, department_id: department_id)
+end
+      
+# ACCT students
+(1..4).each do |i|
+  first_name     = Faker::Name.first_name
+  last_name      = Faker::Name.last_name
+  email          = Faker::Internet.free_email("#{first_name} #{last_name}")
+  username       = ["stud",first_name.split.map(&:chr)*'', last_name].join
+  gender         = ["Male", "Female"].shuffle.first
+  birthday       = Faker::Date.birthday(16, 30)
+  contact_number = Faker::PhoneNumber.cell_phone
+  roles_mask     = 4
+  password       = username
+  
+  User.create(first_name: first_name, last_name: last_name, email: email, gender: gender, 
+        username: username, password: password, birthday: birthday, contact_number: contact_number,
+        roles_mask: roles_mask )
+    
+    course_id      = 5
+    year_level     = i
+    user_id        = i + 45
+    block_id      = i + 16
+    department_id = 3
+  Student.create(user_id: user_id, course_id: course_id, year_level: year_level, block_id: block_id, department_id: department_id)
+end
+        
+# HRM students
+(1..4).each do |i|
     first_name     = Faker::Name.first_name
     last_name      = Faker::Name.last_name
     email          = Faker::Internet.free_email("#{first_name} #{last_name}")
@@ -265,117 +348,14 @@ end
     password       = username
   
     User.create(first_name: first_name, last_name: last_name, email: email, gender: gender, 
-      username: username, password: password, birthday: birthday, contact_number: contact_number,
-      roles_mask: roles_mask )
-    
-  
-    course_id      = 2
-    year_level     = i
-    user_id        = i + 33
-    block_id      = i + 4
-    department_id = 1
-Student.create(user_id: user_id, course_id: course_id, year_level: year_level, block_id: block_id, department_id: department_id)
- end 
-  
-  
-
-    # Nursing students
-    (1..4).each do |i|
-      first_name     = Faker::Name.first_name
-      last_name      = Faker::Name.last_name
-      email          = Faker::Internet.free_email("#{first_name} #{last_name}")
-      username       = ["stud",first_name.split.map(&:chr)*'', last_name].join
-      gender         = ["Male", "Female"].shuffle.first
-      birthday       = Faker::Date.birthday(16, 30)
-      contact_number = Faker::PhoneNumber.cell_phone
-      roles_mask     = 4
-      password       = username
-  
-      User.create(first_name: first_name, last_name: last_name, email: email, gender: gender, 
         username: username, password: password, birthday: birthday, contact_number: contact_number,
         roles_mask: roles_mask )
     
-  
-      course_id      = 3
-      year_level     = i
-      user_id        = i + 37
-      block_id      = i + 8
-      department_id = 2
-Student.create(user_id: user_id, course_id: course_id, year_level: year_level, block_id: block_id, department_id: department_id)  
-    end
-
-      # PT students
-      (1..4).each do |i|
-        first_name     = Faker::Name.first_name
-        last_name      = Faker::Name.last_name
-        email          = Faker::Internet.free_email("#{first_name} #{last_name}")
-        username       = ["stud",first_name.split.map(&:chr)*'', last_name].join
-        gender         = ["Male", "Female"].shuffle.first
-        birthday       = Faker::Date.birthday(16, 30)
-        contact_number = Faker::PhoneNumber.cell_phone
-        roles_mask     = 4
-        password       = username
-  
-        User.create(first_name: first_name, last_name: last_name, email: email, gender: gender, 
-          username: username, password: password, birthday: birthday, contact_number: contact_number,
-          roles_mask: roles_mask )
+    course_id      = 6
+    year_level     = i
+    user_id        = i + 49
+    block_id      = i + 20
+    department_id = 3
     
-  
-        course_id      = 4
-        year_level     = i
-        user_id        = i + 41
-        block_id      = i + 12
-        department_id = 2
-Student.create(user_id: user_id, course_id: course_id, year_level: year_level, block_id: block_id, department_id: department_id)  
-      end
-      
-        # ACCT students
-        (1..4).each do |i|
-          first_name     = Faker::Name.first_name
-          last_name      = Faker::Name.last_name
-          email          = Faker::Internet.free_email("#{first_name} #{last_name}")
-          username       = ["stud",first_name.split.map(&:chr)*'', last_name].join
-          gender         = ["Male", "Female"].shuffle.first
-          birthday       = Faker::Date.birthday(16, 30)
-          contact_number = Faker::PhoneNumber.cell_phone
-          roles_mask     = 4
-          password       = username
-  
-          User.create(first_name: first_name, last_name: last_name, email: email, gender: gender, 
-            username: username, password: password, birthday: birthday, contact_number: contact_number,
-            roles_mask: roles_mask )
-    
-  
-          course_id      = 5
-          year_level     = i
-          user_id        = i + 45
-          block_id      = i + 16
-          department_id = 3
-Student.create(user_id: user_id, course_id: course_id, year_level: year_level, block_id: block_id, department_id: department_id)  
-        end
-        
-          # HRM students
-          (1..4).each do |i|
-            first_name     = Faker::Name.first_name
-            last_name      = Faker::Name.last_name
-            email          = Faker::Internet.free_email("#{first_name} #{last_name}")
-            username       = ["stud",first_name.split.map(&:chr)*'', last_name].join
-            gender         = ["Male", "Female"].shuffle.first
-            birthday       = Faker::Date.birthday(16, 30)
-            contact_number = Faker::PhoneNumber.cell_phone
-            roles_mask     = 4
-            password       = username
-  
-            User.create(first_name: first_name, last_name: last_name, email: email, gender: gender, 
-              username: username, password: password, birthday: birthday, contact_number: contact_number,
-              roles_mask: roles_mask )
-    
-  
-            course_id      = 6
-            year_level     = i
-            user_id        = i + 49
-            block_id      = i + 20
-            department_id = 3
-            Student.create(user_id: user_id, course_id: course_id, year_level: year_level, block_id: block_id, department_id: department_id)
-  
+  Student.create(user_id: user_id, course_id: course_id, year_level: year_level, block_id: block_id, department_id: department_id)
 end

@@ -58,7 +58,7 @@ include Devise::Controllers::Helpers
     
     def sign_up_params
       allow = [:username, :email, :password, :password_confirmation, :remember_me, :first_name, :last_name,
-        :gender, :birthday, :contact_number, :avatar, students_attributes: [:user_id, :course_id, :year_level, :block_id],
+        :gender, :birthday, :contact_number, :avatar, students_attributes: [:user_id, :course_id, :year_level, :block_id, :department_id],
         teachers_attributes: [:user_id, :department_id, :block_id, :status], roles: [] ]
       params.require(resource_name).permit(allow)
     end

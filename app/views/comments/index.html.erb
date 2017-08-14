@@ -15,7 +15,7 @@
 					<%= f.text_area :context, size: "10x2", class: "form-control", required: "true", maxlength: 500, id: 'review_text' %>
 			  <span id="counter" data-maximum-length="<%= @maximum_length %>"><%= @maximum_length %></span>
 				<%= f.hidden_field :activity_id, value: @activity.id %>
-				<%= f	.hidden_field :user_id, value: current_user.id %>
+				<%= f.hidden_field :user_id, value: current_user.id %>
 			
 				<div class="container">
 					<br>

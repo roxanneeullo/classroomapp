@@ -14,7 +14,7 @@
         <td><%= section.name%></td>
 				<td><%= section.schedule%></td>
 				<td><%= section.semester%></td>
-				<td><%= section.teacher.user.first_name%>&nbsp;<%= section.teacher.user.first_name%></td>
+				<td><%= section.teacher.user.first_name%>&nbsp;<%= section.teacher.user.last_name%></td>
 				<td><%= section.subject.name%></td>
         <td><%= link_to 'Show', section %></td>
 				<% if can? :destroy, @section %>
@@ -50,7 +50,7 @@
     <%= f.label :schedule %>
     <%= f.text_field :schedule %>
   </div>
-	
+		
   <div class="actions">
     <%= f.submit %>
   </div>
