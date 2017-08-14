@@ -39,11 +39,11 @@ class Ability
        can :manage, Grade
        can :manage, Activity
        # can :destroy, Status # #uncomment this line, author can destroy status 
-       can :manage, User, :id => user.id
+       can :update, User, :id => user.id
        can :manage, Teacher
        can :read, :all
      elsif user.has_role? :student
-      can :manage, User, :id => user.id
+      can :update, User, :id => user.id
       can :manage, Student
        can :read, :all
        

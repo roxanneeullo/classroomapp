@@ -16,7 +16,6 @@ class UsersController < ApplicationController
   def show
     @students = Student.all
     @teachers = Teacher.all
-   
   end
 
   # DELETE /users/1

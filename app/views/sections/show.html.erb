@@ -11,6 +11,10 @@
   		<thead>
     		<tr>
 					<th>Activities in Section:<%= @section.name %></th>
+					
+						<% if can? :update, Activity %>
+					<th><%= link_to 'Add activity', activities_path(:id => @section.id, :user_id => current_user.id ) %></th>
+					<% end %>
       		<th colspan="1"></th>
     		</tr>
   		</thead>
@@ -53,9 +57,12 @@
         		<td>
 							<a class="post" href="/students/<%= student.id %>"><%= student.user.first_name %>&nbsp;<%= student.user.last_name%></a>
 						</td>
+						<% if can? :update, Grade %>
+						<td><%= link_to 'Add Grade', new_grade_path(:id => student.id, :user_id => current_user.id, :section_id => @section.id ) %></td>
+						<% end %>
 					</tr>
 				<% end.empty? %>
-					<td><strong>No users.</strong></td>
+					<td><strong>No students.</strong></td>
 				<% end %>
 			</div>
   	</tbody>

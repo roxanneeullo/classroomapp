@@ -37,17 +37,19 @@
 					   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	 		    	   <ul class="nav navbar-nav">
 								 
-								 
+								
 					       <div id="MainMenu">
 					         <div class="list-group panel">
+
+										 <% if current_user.roles_mask ==1 %>
 					           <a href="#demo3" class="list-group-item list-group-item-item" data-toggle="collapse" data-parent="#MainMenu"><i class="fa fa-users" aria-hidden="true"></i>&nbsp;Users</a>
 					           <div class="collapse" id="demo3">
-											  <% if can? :update, @user %>
+											  <% if current_user.roles_mask== 1 %>
 					            <a href="/users" class="list-group-item">	<i class="fa fa-user-circle" aria-hidden="true"></i>&nbsp;Users
 							</a>
 								<% end %>
 								
-								<% if can? :update, @student %>
+								<% if can? :manage, @student %>
 							<a href="/students" class="list-group-item"><i class="fa fa-rebel" aria-hidden="true"></i>&nbsp;Students
 							</a>
 							<% end %>
@@ -57,7 +59,9 @@
 								</a>
 								<% end %>
 							
-							</div>
+							
+							
+							</div><% end %>
 							<% if can? :update, @department %>
 								<a href="#demo4" class="list-group-item list-group-item" data-toggle="collapse" data-parent="#MainMenu"><i class="fa fa-university" aria-hidden="true"></i>&nbsp;School</a>
 								<div class="collapse" id="demo4">
@@ -116,12 +120,7 @@
 		            <a href="#demo6" class="list-group-item list-group-item" data-toggle="collapse" data-parent="#MainMenu"><i class="fa fa-percent" aria-hidden="true"></i>&nbsp;Grades</a>
 		             <div class="collapse" id="demo6">
 								
-								<% if can? :read, @activity %>
-								<a href="/activities" class="list-group-item">
-						 			<i class="fa fa-list-alt" aria-hidden="true"></i>&nbsp;Activities
-								</a>
-								<% end %>
-								<% if can? :red, @grade %>
+									<% if can? :red, @grade %>
 								<a href="/grades" class="list-group-item">
 								
 								<i class="fa fa-percent" aria-hidden="true"></i>&nbsp;	Grades

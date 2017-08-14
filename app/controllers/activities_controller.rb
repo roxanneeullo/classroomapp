@@ -3,8 +3,11 @@ class ActivitiesController < ApplicationController
   
   def index
     @activities = Activity.all
+    @teacher = Teacher.where(user_id: params[:user_id]).first
+   # @student = Student.where(user_id: params[:user_id]).first
+    @section = Section.find(params[:id])
     @activity = Activity.new
-    @teachers = Teacher.includes(User)
+   # @teachers = Teacher.all
   end
 
   def show

@@ -1,0 +1,22 @@
+<h1>Grades</h1>
+
+<%= form_for(@grade) do |f| %>
+  
+	
+<h3>new grade</h3>
+  	<%= f.hidden_field :section_id, value: @section.id %>
+  	<%= f.hidden_field :teacher_id, value: @teacher.id %>
+  	<%= f.hidden_field :student_id, value: @student.id %>
+  <div class="field">
+    <%= f.label :score %>
+    <%= f.text_field :score %>
+  </div>
+  <div class="field">
+    <%= f.label :activity_id %>		
+		<%= f.collection_select(:activity_id, Activity.order('content asc'), :id, :content, { :prompt => 'Select Activity' }, class: "form-control")  %>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+	<% end %>

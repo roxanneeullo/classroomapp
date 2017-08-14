@@ -15,6 +15,15 @@ class GradesController < ApplicationController
   # GET /courses/1/edit
   def edit
   end
+  
+  def new
+    @grade = Grade.new
+    @activities = Activity.all
+    @teacher = Teacher.where(user_id: params[:user_id]).first
+    @section = Section.find(params[:id])
+    @student = Student.find(params[:id])
+    @activity = Activity.new
+  end
 
   # POST /courses
   # POST /courses.json

@@ -9,4 +9,6 @@ class Grade < ApplicationRecord
   validates :student_id, presence: true
   validates :score, presence: true
   validates :activity_id, presence: true
+  
+  validates_uniqueness_of   :activity_id, scope: :student_id
 end
