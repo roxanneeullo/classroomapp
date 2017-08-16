@@ -11,7 +11,7 @@ class GradesController < ApplicationController
   def show
    #  @grade = Grade.find(params[:id])
      @student = Student.where(user_id: params[:user_id]).first
-     @section = Section.where(id: params[:section_id]).first
+     @grades = Grade.where(section_id: params[:section_id])
   end
 
   # GET /courses/1/edit
@@ -65,7 +65,7 @@ class GradesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_grade
-      @grade = Grade.find(params[:id])
+      @grade = Grade.where(section_id: params[:section_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
