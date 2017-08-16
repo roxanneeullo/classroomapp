@@ -29,7 +29,7 @@
 <h3>new class list</h3>
   <div class="field">
     <%= f.label :student_id %>		
-		<%= f.collection_select(:student_id, Student.order('id asc'), :id, :id, { :prompt => 'Select Student' }, class: "form-control", id: "info") %>
+		<%= f.collection_select(:student_id, Student.order('id asc'), :id, :id_with_name, { :prompt => 'Select Student' }, class: "form-control", id: "info") %>
 		<label class="hidden_option"><%= :student_id %></label>
 		
   </div>

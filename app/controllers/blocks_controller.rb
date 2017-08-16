@@ -4,6 +4,7 @@ class BlocksController < ApplicationController
   def index
     @blocks = Block.all
     @block = Block.new
+    @departments = Department.all
   end
 
   # GET /courses/1
@@ -58,6 +59,6 @@ class BlocksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def block_params
-      params.require(:block).permit(:name, :teacher_id)
+      params.require(:block).permit(:name, :teacher_id, :department_id)
     end
 end

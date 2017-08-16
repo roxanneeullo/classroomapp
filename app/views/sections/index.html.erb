@@ -36,7 +36,7 @@
   </div>
   <div class="field">
     <%= f.label :teacher_id %>		
-		<%= f.collection_select(:teacher_id, Teacher.order('id asc'), :id, :id, { :prompt => 'Select Teacher' }, class: "form-control")  %>
+		<%= f.collection_select(:teacher_id, Teacher.order('id asc'), :id, :id_with_name, { :prompt => 'Select Teacher' }, class: "form-control")  %>
   </div>
   <div class="field">
     <%= f.label :name %>
@@ -44,11 +44,25 @@
   </div>
   <div class="field">
     <%= f.label :semester %>
-    <%= f.text_field :semester %>
+	<%= f.select(:semester, options_for_select(['First', 'Second', 'Summer']), 
+	     				  {},class: "chzn-select") %>
   </div>
   <div class="field">
     <%= f.label :schedule %>
-    <%= f.text_field :schedule %>
+		<%= f.select(:schedule, options_for_select(['MWF 7:30-9:00', 
+																								'MWF 9:00-10:30',
+																								'MWF 10:30 -12:00',
+																								'MWF 13:30-15:00',
+																								'MWF 15:00-16:30',
+																								'MWF 16:30-18:00',
+																								'TTHS 7:30-9:00', 
+																								'TTHS 9:00-10:30',
+																								'TTHS 10:30 -12:00',
+																								'TTHS 13:30-15:00',
+																								'TTHS 15:00-16:30',
+																								'TTHS 16:30-18:00'
+																								]), 
+		     				  {},class: "chzn-select") %>
   </div>
 		
   <div class="actions">

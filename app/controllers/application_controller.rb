@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   protect_from_forgery with: :exception
-  respond_to :html, :json
+  respond_to :html, :xml, :json, :js
   #check_authorization unless: :activeadmin_resource?
   
  # before_action :configure_permitted_parameters, if: :devise_controller?

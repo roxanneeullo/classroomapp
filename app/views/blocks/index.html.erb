@@ -12,6 +12,7 @@
     <% @blocks.each do |block| %>
       <tr>
         <td><%= block.name%></td>
+				<td><%= block.department.name %></td>
 				<td><%= link_to 'Show', block %></td>
 				<% if can? :destroy, @blocks %>
         	<td><%= link_to 'Destroy', block, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -29,6 +30,11 @@
   <div class="field">
     <%= f.label :name %>	
 		<%= f.text_field :name %>
+  </div>
+	
+  <div class="field">
+    <%= f.label :department_id %>
+		<%= f.collection_select(:department_id, Department.order('name asc'), :id, :name, { :prompt => 'Select Department' }, class: "form-control")  %>
   </div>
   
   <div class="actions">

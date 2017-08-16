@@ -13,5 +13,14 @@ class Student < ApplicationRecord
   validates :course, presence: true
   validates :year_level, presence: true
   validates :block, presence: true
+  
+  
+  def id_with_name
+    str = self.id.to_s
+    str += "  #{self.user.first_name} #{self.user.last_name}" if self.user.present?
+    str
+  end
+    
+    
 end
 

@@ -11,6 +11,7 @@ class GradesController < ApplicationController
   def show
    #  @grade = Grade.find(params[:id])
      @student = Student.where(user_id: params[:user_id]).first
+     @section = Section.where(id: params[:section_id]).first
   end
 
   # GET /courses/1/edit
