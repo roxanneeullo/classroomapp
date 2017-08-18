@@ -17,7 +17,7 @@ class Student < ApplicationRecord
   
   def id_with_name
     str = self.id.to_s
-    str += "  #{self.user.first_name} #{self.user.last_name}" if self.user.present?
+    str += "  #{self.user.first_name} #{self.user.last_name} #{self.department.name}" if self.user.present?
     str
   end
     

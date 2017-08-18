@@ -122,13 +122,13 @@ Teacher.delete_all
 (1..5).each do |i|
   first_name     = Faker::Name.first_name
   last_name      = Faker::Name.last_name
-  email          = Faker::Internet.free_email("#{first_name} #{last_name}")
+  email          = ["admin",i,"@admin.com"].join
   username       = ["admin",i].join
   gender         = ["Male", "Female"].shuffle.first
   birthday       = Faker::Date.birthday(25, 65)
   contact_number = Faker::PhoneNumber.cell_phone
   roles_mask     = 1
-  password   = username
+  password   = "password"
   
   User.create(first_name: first_name, last_name: last_name, email: email, gender: gender, 
     username: username, password: password, birthday: birthday, contact_number: contact_number,
@@ -146,7 +146,7 @@ end
   birthday       = Faker::Date.birthday(25, 65)
   contact_number = Faker::PhoneNumber.cell_phone
   roles_mask     = 2
-  password   = username
+  password   = "password"
   
   User.create(first_name: first_name, last_name: last_name, email: email, gender: gender, 
     username: username, password: password, birthday: birthday, contact_number: contact_number,
@@ -169,7 +169,7 @@ end
   birthday       = Faker::Date.birthday(25, 65)
   contact_number = Faker::PhoneNumber.cell_phone
   roles_mask     = 2
-  password   = username
+  password   = "password"
   
   User.create(first_name: first_name, last_name: last_name, email: email, gender: gender, 
     username: username, password: password, birthday: birthday, contact_number: contact_number,
@@ -193,7 +193,7 @@ end
   birthday       = Faker::Date.birthday(25, 65)
   contact_number = Faker::PhoneNumber.cell_phone
   roles_mask     = 2
-  password   = username
+  password   = "password"
   
   User.create(first_name: first_name, last_name: last_name, email: email, gender: gender, 
     username: username, password: password, birthday: birthday, contact_number: contact_number,
@@ -218,7 +218,7 @@ end
   birthday       = Faker::Date.birthday(16, 30)
   contact_number = Faker::PhoneNumber.cell_phone
   roles_mask     = 4
-  password       = username
+  password       = "password"
   
   User.create(first_name: first_name, last_name: last_name, email: email, gender: gender, 
     username: username, password: password, birthday: birthday, contact_number: contact_number,
@@ -245,7 +245,7 @@ end
   birthday       = Faker::Date.birthday(16, 30)
   contact_number = Faker::PhoneNumber.cell_phone
   roles_mask     = 4
-  password       = username
+  password       = "password"
 
   User.create(first_name: first_name, last_name: last_name, email: email, gender: gender, 
       username: username, password: password, birthday: birthday, contact_number: contact_number,
@@ -271,7 +271,7 @@ end
   birthday       = Faker::Date.birthday(16, 30)
   contact_number = Faker::PhoneNumber.cell_phone
   roles_mask     = 4
-  password       = username
+  password       = "password"
   
   User.create(first_name: first_name, last_name: last_name, email: email, gender: gender, 
       username: username, password: password, birthday: birthday, contact_number: contact_number,
@@ -296,7 +296,7 @@ end
   birthday       = Faker::Date.birthday(16, 30)
   contact_number = Faker::PhoneNumber.cell_phone
   roles_mask     = 4
-  password       = username
+  password       = "password"
   
   User.create(first_name: first_name, last_name: last_name, email: email, gender: gender, 
        username: username, password: password, birthday: birthday, contact_number: contact_number,
@@ -321,7 +321,7 @@ end
   birthday       = Faker::Date.birthday(16, 30)
   contact_number = Faker::PhoneNumber.cell_phone
   roles_mask     = 4
-  password       = username
+  password       = "password"
   
   User.create(first_name: first_name, last_name: last_name, email: email, gender: gender, 
         username: username, password: password, birthday: birthday, contact_number: contact_number,
@@ -345,7 +345,7 @@ end
     birthday       = Faker::Date.birthday(16, 30)
     contact_number = Faker::PhoneNumber.cell_phone
     roles_mask     = 4
-    password       = username
+    password       = "password"
   
     User.create(first_name: first_name, last_name: last_name, email: email, gender: gender, 
         username: username, password: password, birthday: birthday, contact_number: contact_number,
@@ -358,4 +358,20 @@ end
     department_id = 3
     
   Student.create(user_id: user_id, course_id: course_id, year_level: year_level, block_id: block_id, department_id: department_id)
+end
+
+
+# sections 
+(1..4).each do |i|
+  index = i + 4
+    subject = Subject.find(index)
+    name     =  [subject.name,"101"].join
+    semester      = "First"
+    schedule          = "MWF"
+    subject_id       = subject.id
+    teacher = Teacher.find(i)
+    teacher_id       = teacher.id
+    
+    
+  Section.create(name: name, semester: semester, schedule: schedule, subject_id: subject_id, teacher_id: teacher_id)
 end

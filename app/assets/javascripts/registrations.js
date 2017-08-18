@@ -1,20 +1,20 @@
 jQuery(function() {
 	var blocks;
-	$('#user_block_id').parent().hide();
-  blocks = $('#user_block_id').html();
+	$('#teachers_block_id').parent().hide();
+  blocks = $('#teachers_block_id').html();
 	console.log(blocks);
-  return $('#user_department_id').change.(function() {
-		var department, escaped_country, options;
-    department = $('#user_department_id :selected').text();
+  return $('#teachers_department_id').change.(function() {
+		var department, escaped_department, options;
+    department = $('#teachers_department_id :selected').text();
     escaped_department = department.replace(/([ #;&,.+*~\':"!^$[\]()=>|\/@])/g, '\\$1');
     options = $(blocks).filter("optgroup[label='#{escaped_department}']").html();
 		console.log(options);
     if (options){
-      $('#user_block_id').html(options);
-      return $('#user_block_id').parent().show();
+      $('#teachers_block_id').html(options);
+      return $('#teachers_block_id').parent().show();
     else
-      $('#user_block_id').empty();
-      return $('#user_block_id').parent().hide();
+      $('#teachers_block_id').empty();
+      return $('#teachers_block_id').parent().hide();
 		}
 	});
 });

@@ -2,6 +2,7 @@
 <table>
   <thead>
     <tr>
+			<th>name</th>
       <th>Activity Type</th>
 			<th></th>
 			<th>Section</th>
@@ -12,11 +13,14 @@
 
   <tbody>
 		<% @student.grades.each do |grade| %>
+	
 			<tr>
+				<td><%= grade.student.user.first_name%>&nbsp;<%=grade.student.user.last_name%>
 	  		<td><%= grade.activity.activity_type %></td>
 				<td><%= grade.activity.content %></td>
 				<td><%= grade.section.name %>
 				<td><%= grade.score %></td>
+				
 			</tr>
 		<% end %>
   </tbody>

@@ -33,6 +33,8 @@ class Ability
     user ||= User.new
      if user.has_role? :admin
        can :manage, :all
+       cannot :manage, Grade
+       cannot :manage, Activity
      elsif user.has_role? :teacher
        #can :create, Status # author can create status
        can :update, Course # author can update status

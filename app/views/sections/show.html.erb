@@ -5,6 +5,10 @@
 		  <strong>Class:</strong>
 			<%= @section.name %>
 		</p>
+		<p>
+		  <strong>Professor:</strong>
+			<%= @section.teacher.user.first_name %>&nbsp;<%= @section.teacher.user.last_name%>
+		</p>
 	</div>
 	
 	<% if current_user.roles_mask==4%>

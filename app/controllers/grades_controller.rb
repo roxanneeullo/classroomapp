@@ -11,7 +11,10 @@ class GradesController < ApplicationController
   def show
    #  @grade = Grade.find(params[:id])
      @student = Student.where(user_id: params[:user_id]).first
-     @grades = Grade.where(section_id: params[:section_id])
+    # @grades = Grade.where(section_id:, student_id: params[:section_id, :student_id])
+     
+     @grades = Grade.where(params[:section_id] ? {section_id: params[:section_id]} : "section_id IS NOT NULL")
+            .where(params[@student.id] ? {student_id: params[@student.id]} : "student_id IS NOT NULL")
   end
 
   # GET /courses/1/edit
@@ -22,7 +25,7 @@ class GradesController < ApplicationController
     @grade = Grade.new
     @activities = Activity.all
     @teacher = Teacher.where(user_id: params[:user_id]).first
-    @section = Section.find(params[:id])
+    @section = Section.find(params[:section_id])
     @student = Student.find(params[:id])
     @activity = Activity.new
   end
