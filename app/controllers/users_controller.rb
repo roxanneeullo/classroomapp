@@ -14,8 +14,8 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    @students = Student.all
-    @teachers = Teacher.all
+     @student = Student.where(user_id: params[:user_id]).first
+     @teacher = Teacher.where(user_id: params[:user_id]).first
   end
 
   # DELETE /users/1

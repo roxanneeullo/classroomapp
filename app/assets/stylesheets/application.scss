@@ -463,6 +463,7 @@ footer {
     line-height: 20px;
     color: #737373;
     text-overflow: ellipsis;
+		text-align: left;
 }
 
 .card.hovercard .bottom {
@@ -479,13 +480,28 @@ footer {
 }
 
 
+.table-user-information > tbody > tr {
+    border-top: 1px solid rgb(221, 221, 221);
+}
+
+.table-user-information > tbody > tr:first-child {
+    border-top: 0;
+}
+
+
+.table-user-information > tbody > tr > td {
+    border-top: 0;
+}
+.toppad
+{margin-top:20px;
+}
 
 
 
 .form-signin
 {
-    max-width: 330px;
-    padding: 15px;
+    max-width: 550px;
+    padding: 30px;
     margin: 0 auto;
 }
 .form-signin .form-signin-heading, .form-signin .checkbox

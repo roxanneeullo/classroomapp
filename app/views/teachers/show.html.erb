@@ -12,49 +12,45 @@
 	<div class="row">
 		<div class="col-lg-4 col-sm-6 col-md-offset-2">
     	<div class="card hovercard">
-<p>
-  <strong>ID:</strong>
-  <%= @teacher.user_id %>
-</p>
-<p>
-  <strong>First name:</strong>
-  <%= @teacher.user.first_name %>
-</p><p>
-  <strong>Last Name:</strong>
-  <%= @teacher.user.last_name %>
-</p><p>
-  <strong>Department:</strong>
-  <%= @teacher.department.name %>
-</p>
-<p>
-  <strong>Department:</strong>
-  <%= @teacher.department_id %>
-</p>
-<p>
-  <strong>Advisory Block:</strong>
-  <%= @teacher.block.name %>
-</p>
-
-<p>
-  <strong>Status:</strong>
-  <%= @teacher.status %>
-</p>
- 
- <p><Strong>Subjects:</strong>
-<table>	
-	 <% @teacher.subjects.each do |subject| %>
-	 <tr>
-        <td><%= subject.name %></td>
-			
-					</tr>
-		    <% end %>	
-</table>
-
-
-</p>
-<%= link_to 'Edit', edit_teacher_path(@teacher) %> |
-<%= link_to 'Back', teachers_path %>
-	</div>
+      	<div class="cardheader">
+				</div>
+				<div class="avatar">
+					<%= image_tag @teacher.user.avatar.url(:thumb) %>
+				</div>
+				<div class="title">
+  				<strong><%= @teacher.user.first_name %>&nbsp;<%= @teacher.user.last_name %> </strong>
+					<br>
+				</div>
+				
+				<div class=" col-md-9 col-lg-9 "> 
+					<table class="table table-user-information">
+						<tbody>
+					  	<tr>
+   							<td>Department:</td>
+  				 			<td><%= @teacher.department.name %></td>
+							</tr>
+							<tr>
+								<td>Department:</td>
+ 							 	<td><%= @teacher.department_id %></td>
+							</tr>
+							<tr>
+  							<td>Advisory Block:</td>
+  							<td><%= @teacher.block.name %></td>
+							</tr>
+							<tr>
+  							<td>Status:</td>
+  							<td><%= @teacher.status %></td>
+							</tr>
+ 						 	<tr>
+								<td>Subjects Handled:</td>
+								<% @teacher.subjects.each do |subject| %>
+	 								<td><%= subject.name %></td>
+							</tr>
+		   			 		<% end %>	
+						</tbody>
+					</table>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>

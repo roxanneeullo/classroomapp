@@ -33,8 +33,13 @@
    			<% if @section.activities.each_with_index do |activity| %>
       		<tr>
 						<td>
-							
-							<a href="<%= comments_path(:id => activity.id) %>"><%= activity.activity_type %></a>
+							<% if activity.activity_type == "Exams"%>
+								<i class="fa fa-calendar" aria-hidden="true"></i><a href="<%= comments_path(:id => activity.id) %>">&nbsp;<%= activity.activity_type %></a>
+							<% elsif activity.activity_type == "Lecture"%>
+								<i class="fa fa-book" aria-hidden="true"></i><a href="<%= comments_path(:id => activity.id) %>">&nbsp;<%= activity.activity_type %></a>
+							<% elsif activity.activity_type == "Assignment"%>
+								<i class="fa fa-pencil" aria-hidden="true"></i><a href="<%= comments_path(:id => activity.id) %>">&nbsp;<%= activity.activity_type %></a>
+							<% end %>
 						</td>
 						<td><%= activity.content%>
       		</tr>
@@ -69,7 +74,7 @@
 							<a class="post" href="/students/<%= student.id %>"><%= student.user.first_name %>&nbsp;<%= student.user.last_name%></a>
 						</td>
 						<% if can? :update, Grade %>
-						<td><%= link_to 'Add Grade', new_grade_path(:id => student.id, :user_id => current_user.id, :section_id => @section.id ) %></td>
+						<td><i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;<%= link_to 'Add Grade', new_grade_path(:id => student.id, :user_id => current_user.id, :section_id => @section.id ) %></td>
 						<% end %>
 					</tr>
 				<% end.empty? %>

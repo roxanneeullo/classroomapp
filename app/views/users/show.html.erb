@@ -13,9 +13,14 @@
 	<% end %>
 </ul>
 
-
 <div class="container">
 	<div class="row">
+  	<div class="col-md-5  toppad  pull-right col-md-offset-3 ">
+			<% if can? :update, @user %>
+    	  <a href="<% edit_user_registration_path(@user) %>" class= "btn btn-sm btn-info "><i class="fa fa-pencil-square-o" aria-hidden="true"></i> &nbsp;Edit Profile</a>
+      	<br>
+			<% end%>
+		</div>
 		<div class="col-lg-4 col-sm-6 col-md-offset-2">
     	<div class="card hovercard">
       	<div class="cardheader">
@@ -26,37 +31,43 @@
 				</div>
 				
 				<div class="title">
-  				<%= @user.first_name %>&nbsp;<%= @user.last_name %>
+  				<strong><%= @user.first_name %>&nbsp;<%= @user.last_name %> </strong>
+					<br>
 				</div>
 				
-				<div class="description">
-   					<strong>user ID:</strong>
-  				 	<%= @user.id%>
-				</div>
-				<div class="description">
-  				<strong>Username:</strong>
- 				  <%= @user.username %>
-				</div>
-				
-				<div class="description">
- 					<strong>Gender:</strong>
- 				 	<%= @user.gender %>
-			 	</div>
-			 
-			 	<div class="description">
- 			   	<strong>Birthday:</strong>
- 			 	 	<%= @user.birthday %>
+				<div class=" col-md-9 col-lg-9 "> 
+					<table class="table table-user-information">
+						<tbody>
+					  	<tr>
+								<% if @user.roles_mask == 1%>
+   								<td>user ID:</td>
+  				 				<td><%= @user.id%></td>
+								<% elsif @user.roles_mask == 2%>
+   								<td>Teacher ID:</td>
+  				 				<td><%= @user.teachers.first.id%></td>
+								<% elsif @user.roles_mask == 4%>
+   								<td>Student ID:</td>
+  				 				<td><%= @user.students.first.id%></td>
+								<% end %>
+							</tr>
+							<tr>
+								<td>Username:</td>
+ 				  			<td><%= @user.username %></td>
+							</tr>
+							<tr>
+								<td>Gender:</td>
+ 				 			  <td><%= @user.gender %></td>
+							</tr>
+							<tr>
+								<td>Birthday:</td>
+ 			 	 				<td><%= @user.birthday %></td>
+							</tr>
+				 	 	 		<td>Contact number:</td>
+  			 				<td>	<%= @user.contact_number %></td>
+ 							</tr>
+						</tbody>
+ 					</table>
 		 	 </div>
-
-			 <div class="description">
-  			 <strong>Contact number:</strong>
-  			 <%= @user.contact_number %>
-			 </div>
-
- 			<% if can? :update, @user %>
-				<%= link_to 'Edit', edit_user_registration_path(@user) %> |
-			<% end %>
-			<%= link_to 'Back', users_path %>
 			</div>
 		</div>
 	</div>
