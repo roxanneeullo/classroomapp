@@ -1,4 +1,5 @@
 <div class="container">
+	
 <table>
   <thead>
     <tr>
@@ -12,7 +13,7 @@
   </thead>
 
   <tbody>
-		<% @student.grades.each do |grade| %>
+		<% @grades.each do |grade| %>
 	
 			<tr>
 				<td><%= grade.student.user.first_name%>&nbsp;<%=grade.student.user.last_name%>

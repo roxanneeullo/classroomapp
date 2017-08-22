@@ -6,18 +6,10 @@ class GradesController < ApplicationController
     @grade = Grade.new
   end
 
-  # GET /courses/1
-  # GET /courses/1.json
   def show
-   #  @grade = Grade.find(params[:id])
-     @student = Student.where(user_id: params[:user_id]).first
-    # @grades = Grade.where(section_id:, student_id: params[:section_id, :student_id])
-     
-     @grades = Grade.where(params[:section_id] ? {section_id: params[:section_id]} : "section_id IS NOT NULL")
-            .where(params[@student.id] ? {student_id: params[@student.id]} : "student_id IS NOT NULL")
+    @grades = Grade.where("section_id = ? AND student_id = ?", params[:section_id],  params[:student_id])
   end
 
-  # GET /courses/1/edit
   def edit
   end
   
@@ -30,8 +22,6 @@ class GradesController < ApplicationController
     @activity = Activity.new
   end
 
-  # POST /courses
-  # POST /courses.json
   def create
     @grade = Grade.create(grade_params)
       if @grade.save
@@ -43,8 +33,6 @@ class GradesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /courses/1
-  # PATCH/PUT /courses/1.json
   def update
     respond_to do |format|
       if @grade.update(grade_params)
@@ -57,8 +45,6 @@ class GradesController < ApplicationController
     end
   end
 
-  # DELETE /courses/1
-  # DELETE /courses/1.json
   def destroy
     @grade.destroy
     flash[:danger] = "Grade deleted!"
@@ -70,9 +56,10 @@ class GradesController < ApplicationController
     def set_grade
       @grade = Grade.where(section_id: params[:section_id])
     end
-
+    
     # Never trust parameters from the scary internet, only allow the white list through.
     def grade_params
       params.require(:grade).permit(:activity_id, :section_id, :student_id, :teacher_id, :score)
     end
+    
 end

@@ -6,6 +6,7 @@ class SectionsController < ApplicationController
   end
   
   def show
+     @student = Student.where(user_id: params[:user_id]).first
   end
   
   def create
@@ -19,8 +20,6 @@ class SectionsController < ApplicationController
     end
   end
 
-    # PATCH/PUT /courses/1
-    # PATCH/PUT /courses/1.json
   def update
     respond_to do |format|
       if @section.update(section_params)
@@ -44,8 +43,8 @@ class SectionsController < ApplicationController
     def set_section
       @section = Section.find(params[:id])
     end
-
-      # Never trust parameters from the scary internet, only allow the white list through.
+    
+# Never trust parameters from the scary internet, only allow the white list through.
     def section_params
       params.require(:section).permit(:name, :semester, :schedule, :teacher_id, :subject_id, teaching_loads_attributes: [:teacher_id, :subject_id])
     end
