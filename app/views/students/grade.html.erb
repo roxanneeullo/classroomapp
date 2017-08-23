@@ -1,28 +1,28 @@
 
 <div class="container">
 	<div class="row custyle">
-		<table class="table table-striped custab">
-  		<thead>
-    		<tr>
-      		<th>My Grades</th>
-      		<th>Subject</th>
-    		</tr>
-  		</thead>
-  		<tbody>
-				<% @student.grades.each do |grade| %>
-					<tr>
-						<div class="col-md-3">
-							<td><%= grade.score %></td>
-							 <td><%= grade.section.subject.name %></td>
-						</div>
-					</tr>
-				<% end %>
-			</tbody>
-		</table>
-		<div class="container">
-		Average:
-		<%= @student.grades.average(:score)  %>
-	</div>
+		<h3 class="text-center">My Grades</h3>
+		<div id="no-more-tables">
+			<table class="col-md-12 table-bordered table-striped table-condensed cf">
+  			<thead class="cf">
+    			<tr>
+      			<th>Subject</th>
+						<th>Grade</th>
+    			</tr>
+  			</thead>
+  			<tbody>
+					<% @student.grades.each do |grade| %>
+						<tr>
+							<td data-title="Subject"><%= grade.score %></td>
+							<td data-title="Grade"><%= grade.section.subject.name %></td>
+						</tr>
+					<% end %>
+				</tbody>
+			</table>
+			<div class="container">
+				<p>Average: <%= @student.grades.average(:score)  %></p>
+			</div>
+		</div>
 	</div>
 </div>
 			

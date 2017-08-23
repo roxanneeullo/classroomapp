@@ -1,22 +1,22 @@
 <div class="container">
 	<div class="row custyle">
-		<table class="table table-striped custab">
-  		<thead>
-    		<tr>
-      		<th class="text-center">My Curriculum</th>
-      		<th colspan="3"></th>
-    		</tr>
-  		</thead>
-  		<tbody>
-				<% @student.course.subjects.each do |subject| %>
-					<tr>
-						<div class="col-md-3">
-			    		<td><%= subject.name %></td>
-						</div>
-					</tr>
-				<% end %>
-			</tbody>
-		</table>
+		<h3 class="text-center">My Curriculum</h3>
+		<div id="no-more-tables">
+			<table class="col-md-12 table-bordered table-striped table-condensed cf">
+  			<thead class="cf">
+    			<tr>
+      			<th>Subjects</th>
+    			</tr>
+  			</thead>
+  			<tbody>
+					<% @student.course.subjects.each do |subject| %>
+						<tr>
+							<td data-title="Subject"><%= subject.name %></td>
+						</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
 	</div>
 </div>
 			

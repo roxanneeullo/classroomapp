@@ -4,4 +4,6 @@ class TeachingLoad < ApplicationRecord
   
   validates :teacher_id, presence: true
   validates :subject_id, presence: true
+  
+  validates_uniqueness_of   :subject_id, scope: :teacher_id
 end

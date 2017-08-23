@@ -1,10 +1,30 @@
-<p>
-  <strong>Activity:</strong>
-	<%= @activity.activity_type %><br>
-	<%= @activity.content%>
-	<%= @activity.section.name%>
-</p>
+<br>
+<div class="container">
+<div class="panel panel-default">
+	<div class="panel-body">
+		<div class="pull-left">
+			<img class="media-object img-circle" src="<%= @activity.teacher.user.avatar.url(:thumb) %>" 
+				width="50px" height="50px" style="margin-right:8px; margin-top:-5px;">
+		</div>
+	  <span>
+	  	<h1 class="panel-title pull-left" style="font-size:30px;">
+				<%= @activity.activity_type %>:
+				<%= @activity.content%>
+			</h1>
+		</span>
+		<br><hr>
+		<div class="media-body">
+			<p>Posted by: <%= @activity.teacher.user.first_name %>&nbsp;<%= @activity.teacher.user.last_name%></p>
+			<p><%= @activity.section.name%>&nbsp;</p>
+			<p><%= @activity.section.schedule %></p>
+			
+		</div>
+		<hr>
+	</div>
+</div>
+</div>
 
+<h4>Add Comment:</h4>
 
 <%= form_for (@comment) do |f| %>
 	<div class="panel panel-default">
@@ -14,14 +34,13 @@
 				width="50px" height="50px" style="margin-right:8px; margin-top:-5px;">
 			</div>
 	    <span>
-	    	<h1 class="panel-title pull-left" style="font-size:30px;">
-					<%= current_user.first_name %>&nbsp;<%= current_user.last_name%>
-				</h1>
+	      <h4><a>
+					<strong><%= current_user.first_name %>&nbsp;<%= current_user.last_name%></strong></a>
 			</span>
 			<br><hr>
 			<div class="media-body">
 				<%= f.text_area :context, size: "10x2", class: "form-control", required: "true", 
-					maxlength: 500, id: 'review_text' %>
+					maxlength: 140, id: 'review_text', placeholder: "Comment" %>
 			  <span id="counter" data-maximum-length="<%= @maximum_length %>"><%= @maximum_length %></span>
 				<%= f.hidden_field :activity_id, value: @activity.id %>
 				<%= f.hidden_field :user_id, value: current_user.id %>
@@ -41,6 +60,7 @@
 	  </div>
 	</div>
 <% end %>
+ 
  
 <% @activity.comments.each do |comment| %>
 	<div class="panel panel-default">
@@ -63,11 +83,12 @@
             	<span class="caret"></span>
             </button>
             <ul class="dropdown-menu" aria-labelledby="dd1" style="float: right;">
-            	<li><a href="#"><i class="fa fa-fw fa-exclamation-triangle" aria-hidden="true"></i> Report</a></li>
 							<% if comment.user_id == current_user.id%>
               	<li><a href="#"><i class="fa fa-fw fa-ban" aria-hidden="true"></i> Edit</a></li>
               	<li role="separator" class="divider"></li>
 						 	  <li><a href="#"><i class="fa fa-fw fa-trash" aria-hidden="true"></i> Delete</a></li>
+							<% else %>	
+								<li><a href="#"><i class="fa fa-fw fa-exclamation-triangle" aria-hidden="true"></i> 									Report</a></li>
 							<% end%>
            	</ul>
           </div>
