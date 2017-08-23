@@ -53,8 +53,8 @@ footer {
 
 .navbar-fixed-side {
   @media (max-width: $grid-float-breakpoint) {
-    margin-left: -15px;
-    margin-right: -15px;
+    margin-left: -10px;
+    margin-right: -10px;
   }
 
   @media (min-width: $grid-float-breakpoint) {
@@ -584,4 +584,34 @@ footer {
     color: #cf7474;
     background-color: #d78b8b;
   }
+}
+
+
+.card.hovercard2 {
+    position: relative;
+    padding-top: 0;
+    overflow: hidden;
+    text-align: center;
+    background-color: rgba(214, 224, 226, 0.2);
+}
+
+.card.hovercard2 .cardheader {
+    height: 100px;
+}
+
+.card.hovercard2 .avatar {
+    position: relative;
+    top: -100px;
+    margin-bottom: -100px;
+}
+
+.card.hovercard2 .avatar img {
+    width: 100px;
+    height: 100px;
+    max-width: 100px;
+    max-height: 100px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    border: 5px solid rgba(255,255,255,0.5);
 }

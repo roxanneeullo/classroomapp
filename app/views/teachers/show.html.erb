@@ -1,3 +1,4 @@
+<% if @teacher.user_id == current_user.id %>
 <ul class="nav nav-tabs">
   <li class="nav-item">
     <a class="nav-link active" href="/users/<%= current_user.id %>"><i class="fa fa-pie-chart"></i>Basic</a>
@@ -6,7 +7,7 @@
     <a class="nav-link" href="<%= teacher_path(user_id: current_user.id) %>"><i class="fa fa-user-o"></i>Teacher</a>
   </li>
 </ul>
-
+<% end %>
 
 <div class="container">
 	<div class="row">

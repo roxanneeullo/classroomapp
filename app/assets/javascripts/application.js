@@ -17,14 +17,32 @@
 //= require_tree .
 
 	$(document).ready(function(){
-	    $("#info").change(function(){
-	        if($("#info").val() == 1){
-	          $(".hidden_option").fadeIn('fast');   
-	        }            
-	    });    
+		$("#info").change(function(){
+	  	if($("#info").val() == 1){
+	    	$(".hidden_option").fadeIn('fast');   
+	      	}            
+	  });    
 			
-			$("#success-alert").fadeTo(2000, 500).slideUp(500, function(){
-			    $("#success-alert").slideUp(500);
-			});
-			    
+		$("#success-alert").fadeTo(2000, 500).slideUp(500, function(){
+			$("#success-alert").slideUp(500);
+		});
+			
+		function handleFileSelect(evt) {
+			var files = evt.target.files; // FileList object
+				f=files[0]
+			  // Only process image files.
+			  if (f.type.match('image.*')) {
+			  	var reader = new FileReader();
+			    reader.onload = (function(theFile) {
+			    return function(e) {
+			    document.getElementById('preview').src=e.target.result;
+			    };
+			   })(f);
+			   // Read in the image file as a data URL.
+			   reader.readAsDataURL(f);
+				}
+			}
+			document.getElementById('preview-here').addEventListener('change', handleFileSelect, false);
+				
+				
 	});
