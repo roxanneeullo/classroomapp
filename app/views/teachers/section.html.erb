@@ -6,14 +6,13 @@
     		<tr>
       		<th>My Schedule</th>
       		<th>Time Period</th>
-					<th>Professor</th>
     		</tr>
   		</thead>
   		<tbody>
 				<% @teacher.sections.each do |section| %>
 					<tr>
 						<div class="col-md-3">
-				  		<td> <a href="<%= section_path(section.id, :user_id => current_user.id ) %>"> <%= section.name %></a></td>
+				  		<td><i class="fa fa-search-plus" aria-hidden="true"></i> <a href="<%= section_path(section.id, :user_id => current_user.id ) %>"> <%= section.name %></a></td>
 							<td><%= section.schedule %></td>
 						</div>
 					</tr>

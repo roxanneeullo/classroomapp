@@ -15,6 +15,7 @@ class GradesController < ApplicationController
   
   def new
     @grade = Grade.new
+     @grades = Grade.where("section_id = ? AND student_id = ?", params[:section_id],  params[:id])
     @activities = Activity.all
     @teacher = Teacher.where(user_id: params[:user_id]).first
     @section = Section.find(params[:section_id])

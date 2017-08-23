@@ -2,7 +2,8 @@ class ActivitiesController < ApplicationController
   load_and_authorize_resource
   
   def index
-    @activities = Activity.all
+    @activities = Activity.where(section_id: params[:id])
+     #@activity = 
     @teacher = Teacher.where(user_id: params[:user_id]).first
    # @student = Student.where(user_id: params[:user_id]).first
     @section = Section.find(params[:id])
@@ -34,7 +35,7 @@ class ActivitiesController < ApplicationController
 
       if @activity.save
         flash[:success] = "Activity was successfully posted!"
-        redirect_to :back
+        redirect_to :controller => 'Section', :action => 'show' 
       else
         flash[:danger] = "Ooops!"
         redirect_to :back

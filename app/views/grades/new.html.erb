@@ -1,15 +1,45 @@
 <h1>Grades</h1>
 
+<table class="table table-striped custab">
+  <thead>
+    <tr>
+      <th>Activity Type</th>
+			<th>Student Name</th>
+			<th>Section Name</th>
+			<th>Grade</th>
+			<th>Teacher Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @grades.each do |grade| %>
+      <tr>
+        <td><%= grade.activity.activity_type%>&nbsp;<%= grade.activity.content%></td>
+				<td><%= grade.student.user.first_name%>&nbsp;<%= grade.student.user.last_name%></td>
+				<td><%= grade.section.name%></td>
+				<td><%= grade.score%></td>
+				<td><%= grade.teacher.user.first_name%>&nbsp;<%= grade.teacher.user.last_name%></td>
+				
+				<% if can? :destroy, @grades %>
+        	<td><%= link_to 'Destroy', grade, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      	<% end %>
+			</tr>
+    <% end %>
+  </tbody>
+</table>
+
+
 <%= form_for(@grade) do |f| %>
   
 	
-<h3>new grade</h3>
+<h3>Add Grade</h3>
   	<%= f.hidden_field :section_id, value: @section.id %>
   	<%= f.hidden_field :teacher_id, value: @teacher.id %>
   	<%= f.hidden_field :student_id, value: @student.id %>
   <div class="field">
     <%= f.label :score %>
-    <%= f.text_field :score %>
+    <%= f.text_field :score, class: "form-control" %>
   </div>
   <div class="field">
     <%= f.label :activity_id %>		
@@ -17,6 +47,6 @@
   </div>
   
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Add Grade", class:"btn btn-sm btn-info pull-right" %>
   </div>
 	<% end %>

@@ -1,6 +1,6 @@
 <h1>Activities</h1>
 
-<table>
+<table class="table table-striped custab">
   <thead>
     <tr>
       <th>Name</th>
@@ -14,8 +14,8 @@
         <td><%= activity.activity_type%></td>
 				<td><%= activity.content%></td>
 				<td><%= activity.section.name%></td>
-				<td><%= activity.teacher.user.first_name%></td>
-				<td><%= link_to 'Show', comments_path(:id => activity.id)%></td>
+				<td><%= activity.teacher.user.first_name%>&nbsp;<%= activity.teacher.user.last_name%></td>
+				<td><i class="fa fa-search-plus" aria-hidden="true"></i><%= link_to 'View', comments_path(:id => activity.id)%></td>
         
 				<% if can? :destroy, @activities %>
         	<td><%= link_to 'Destroy', activity, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -29,20 +29,20 @@
 <%= form_for(@activity) do |f| %>
   
 	
-<h3>new activity</h3>
+<h3>New activity</h3>
   <div class="field">
     <%= f.label :activity_type %>
 		<%= f.select(:activity_type, options_for_select(['Assignment', 'Lecture', 'Exams']), 
-		     				  {},class: "chzn-select") %>
+		     				  {},class: "chzn-select form-control") %>
   </div>
   <div class="field">
     <%= f.label :content %>	
-		<%= f.text_field :content %>
+		<%= f.text_field :content, class: "form-control" %>
   </div>
 	<%= f.hidden_field :section_id, value: @section.id %>
 	<%= f.hidden_field :teacher_id, value: @teacher.id %>
 	
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Add Activity", class: "btn btn-sm btn-info pull-right"%>
   </div>
 	<% end %>

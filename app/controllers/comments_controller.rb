@@ -11,10 +11,10 @@ class CommentsController < ApplicationController
     @comment = Comment.create(comment_params)
     
     if @comment.save
-      flash[:success] = "You commented the hell out of that post!"
+      flash[:success] = "Your comment was successfully posted!"
       redirect_to :back
     else
-      flash[:alert] = "Check the comment form, something went horribly wrong."
+      flash[:alert] = "Oops, something went wrong."
       redirect_to :back
     end
   end
