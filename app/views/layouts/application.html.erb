@@ -26,71 +26,70 @@
 	  			<nav class="navbar navbar-default navbar-fixed-side" role="navigation">
 	  				<div class="container">
         			<div class="navbar-header">
-            		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            		<button type="button" class="navbar-toggle" data-toggle="collapse" 								data-target="#bs-example-navbar-collapse-1">
                 	<span class="sr-only">Toggle navigation</span>
                 	<span class="icon-bar"></span>
                 	<span class="icon-bar"></span>
                 	<span class="icon-bar"></span>
             		</button>
-            		<a class="navbar-brand <%= 'active' if current_page?(root_path) %>" href=<%= root_path %>>Classroom App</a>
-       				 </div>	<!-- header -->
+            		<a class="navbar-brand <%= 'active' if current_page?(root_path) %>" 
+									href=<%= root_path %>>Classroom App</a>
+       				</div>	<!-- header -->
 						
-					   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-	 		    	   <ul class="nav navbar-nav">
-								 
-								
-					       <div id="MainMenu">
-					         <div class="list-group panel">
-
-										 <% if current_user.roles_mask ==1 %>
-					           <a href="#demo3" class="list-group-item list-group-item-item" data-toggle="collapse" data-parent="#MainMenu"><i class="fa fa-users" aria-hidden="true"></i>&nbsp;Users</a>
-					           <div class="collapse" id="demo3">
-											  <% if current_user.roles_mask== 1 %>
-					            <a href="/users" class="list-group-item">	<i class="fa fa-user-circle" aria-hidden="true"></i>&nbsp;Users
-							</a>
-								<% end %>
-								
-								<% if can? :manage, @student %>
-							<a href="/students" class="list-group-item"><i class="fa fa-rebel" aria-hidden="true"></i>&nbsp;Students
-							</a>
-							<% end %>
-							
-							<% if can? :update, @teacher %>
-								<a href="/teachers" class="list-group-item"><i class="fa fa-empire" aria-hidden="true"></i>&nbsp;Teachers
-								</a>
-								<% end %>
-							
-							
-							
-							</div><% end %>
-							<% if can? :update, @department %>
-								<a href="#demo4" class="list-group-item list-group-item" data-toggle="collapse" data-parent="#MainMenu"><i class="fa fa-university" aria-hidden="true"></i>&nbsp;School</a>
+					   	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	 		    	  	<ul class="nav navbar-nav">
+					    		<div id="MainMenu">
+					        	<div class="list-group panel">
+											<% if current_user.roles_mask ==1 %>
+					           		<a href="#demo3" class="list-group-item list-group-item-item" 
+												data-toggle="collapse" data-parent="#MainMenu">
+												<i class="fa fa-users" aria-hidden="true"></i>&nbsp;Users</a>
+					           	 		<div class="collapse" id="demo3">
+											  		<% if current_user.roles_mask== 1 %>
+					            				<a href="/users" class="list-group-item">	
+																&nbsp;&nbsp;<i class="fa fa-user-circle" aria-hidden="true"></i>&nbsp;Users
+															</a>
+														<% end %>
+											<% if can? :manage, @student %>
+												<a href="/students" class="list-group-item">
+													&nbsp;&nbsp;<i class="fa fa-rebel" aria-hidden="true"></i>&nbsp;Students
+												</a>
+											<% end %>
+											<% if can? :update, @teacher %>
+												<a href="/teachers" class="list-group-item">
+													&nbsp;&nbsp;<i class="fa fa-empire" aria-hidden="true"></i>&nbsp;Teachers
+												</a>
+											<% end %>
+										</div>
+									<% end %>
+									<% if can? :update, @department %>
+									<a href="#demo4" class="list-group-item list-group-item" data-toggle="collapse" data-parent="#MainMenu"><i class="fa fa-university" aria-hidden="true"></i>&nbsp;School</a>
 								<div class="collapse" id="demo4">
 								
 								<% if can? :update, @department %>
 								<a href="/departments" class="list-group-item">
-		 		      	<i class="fa fa-building" aria-hidden="true"></i>&nbsp;	Departments
+		 		      	&nbsp;&nbsp;<i class="fa fa-building" aria-hidden="true"></i>&nbsp;	Departments
 								</a>
 								<% end %>
 							
 								<% if can? :update, @course %>
 								<a href="/courses" class="list-group-item">
-	 		        		<i class="fa fa-list-alt" aria-hidden="true"></i>&nbsp;Courses
+	 		        		&nbsp;&nbsp;<i class="fa fa-list-alt" aria-hidden="true"></i>&nbsp;Courses
 								</a>
 								<% end %>
 								<% if can? :update, @block %>	
 								<a href="/blocks" class="list-group-item">
-					 				<i class="fa fa-list-alt" aria-hidden="true"></i>&nbsp;Blocks
+					 				&nbsp;&nbsp;<i class="fa fa-list-alt" aria-hidden="true"></i>&nbsp;Blocks
 								</a>
 								<% end %>
 			 		    	<% if can? :update, @subject %>
 								<a href="/subjects" class="list-group-item">
-									<i class="fa fa-list-alt" aria-hidden="true"></i>&nbsp;Subjects
+									&nbsp;&nbsp;<i class="fa fa-list-alt" aria-hidden="true"></i>&nbsp;Subjects
 								</a>
 								<% end %>	
 								<% if can? :update, @curriculum %>	
 								<a href="/curriculums" class="list-group-item">
-				 		  		<i class="fa fa-list-alt" aria-hidden="true"></i>&nbsp;Curriculums
+				 		  		&nbsp;&nbsp;<i class="fa fa-list-alt" aria-hidden="true"></i>&nbsp;Curriculums
 								</a>
 				 		  	<% end %>
 							</div>
@@ -101,17 +100,17 @@
 		             <div class="collapse" id="demo5">
 								<% if can? :update, @teaching_load %>
 								<a href="/teaching_loads" class="list-group-item">
-								<i class="fa fa-list-alt" aria-hidden="true"></i>&nbsp;	Loads
+								&nbsp;&nbsp;<i class="fa fa-list-alt" aria-hidden="true"></i>&nbsp;	Loads
 								</a>
 								<% end %>
 								<% if can? :update, @class_list %>
 								<a href="/class_lists" class="list-group-item">
-					 	  		<i class="fa fa-list-alt" aria-hidden="true"></i>&nbsp;ClassList
+					 	  		&nbsp;&nbsp;<i class="fa fa-list-alt" aria-hidden="true"></i>&nbsp;ClassList
 								</a>
 								<% end %>
 								<% if can? :update, @section %>	
 								<a href="/sections" class="list-group-item">
-					 				<i class="fa fa-list-alt" aria-hidden="true"></i>&nbsp;Sections</a>
+					 				&nbsp;&nbsp;<i class="fa fa-list-alt" aria-hidden="true"></i>&nbsp;Sections</a>
 								<% end %>	
 							
 							</div>
@@ -124,13 +123,13 @@
 			            <a href="#demo8" class="list-group-item list-group-item" data-toggle="collapse" data-parent="#MainMenu"><i class="fa fa-university" aria-hidden="true"></i>&nbsp;School Shit </a>
 			             <div class="collapse" id="demo8">
 								
-									<a href="<%= students_subjects_path(user_id: current_user.id) %>"class="list-group-item"><i class="fa fa-id-badge" aria-hidden="true"></i>&nbsp;
+									<a href="<%= students_subjects_path(user_id: current_user.id) %>"class="list-group-item">&nbsp;&nbsp;<i class="fa fa-id-badge" aria-hidden="true"></i>&nbsp;
 										My Curriculum
 									</a>
-							<a href="<%= students_schedule_path(user_id: current_user.id) %>"class="list-group-item"><i class="fa fa-id-badge" aria-hidden="true"></i>&nbsp;
+							<a href="<%= students_schedule_path(user_id: current_user.id) %>"class="list-group-item">&nbsp;&nbsp;<i class="fa fa-id-badge" aria-hidden="true"></i>&nbsp;
 								My Schedule
 							</a>
-							<a href="<%= students_grades_path(user_id: current_user.id) %>"class="list-group-item"><i class="fa fa-percent" aria-hidden="true"></i>&nbsp;
+							<a href="<%= students_grades_path(user_id: current_user.id) %>"class="list-group-item">&nbsp;&nbsp;<i class="fa fa-percent" aria-hidden="true"></i>&nbsp;
 								My Grades
 							</a>
 
@@ -143,10 +142,10 @@
 	            <a href="#demo9" class="list-group-item list-group-item" data-toggle="collapse" data-parent="#MainMenu"><i class="fa fa-university" aria-hidden="true"></i>&nbsp;Teacher Shit </a>
 	             <div class="collapse" id="demo9">
 						
-							<a href="<%= teachers_subjects_path(user_id: current_user.id) %>"class="list-group-item"><i class="fa fa-id-badge" aria-hidden="true"></i>&nbsp;
+							<a href="<%= teachers_subjects_path(user_id: current_user.id) %>"class="list-group-item">&nbsp;&nbsp;<i class="fa fa-id-badge" aria-hidden="true"></i>&nbsp;
 								My subjects
 							</a>
-							<a href="<%= teachers_sections_path(user_id: current_user.id) %>"class="list-group-item"><i class="fa fa-id-badge" aria-hidden="true"></i>&nbsp;
+							<a href="<%= teachers_sections_path(user_id: current_user.id) %>"class="list-group-item">&nbsp;&nbsp;<i class="fa fa-id-badge" aria-hidden="true"></i>&nbsp;
 								My classes
 							</a>
 							</div>
@@ -156,11 +155,11 @@
 		            <a href="#demo7" class="list-group-item list-group-item" data-toggle="collapse" data-parent="#MainMenu"><i class="fa fa-id-card-o" aria-hidden="true"></i>&nbsp;<%= current_user.first_name %> </a>
 		             <div class="collapse" id="demo7">
 								
-								<a href="/users/<%= current_user.id %>"class="list-group-item"><i class="fa fa-id-badge" aria-hidden="true"></i>&nbsp;
+								<a href="/users/<%= current_user.id %>"class="list-group-item">&nbsp;&nbsp;<i class="fa fa-id-badge" aria-hidden="true"></i>&nbsp;
 									My Profile
 								</a>
 							
-							<a href="<%= destroy_user_session_path %>" class="list-group-item"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout
+							<a href="<%= destroy_user_session_path %>" class="list-group-item">&nbsp;&nbsp;<i class="fa fa-sign-out" aria-hidden="true"></i>Logout
 
 		 						<%= link_to 'Logout', destroy_user_session_path, 
 									data: { confirm: "Are you sure you want to logout?" }, method: :delete %>
@@ -213,7 +212,7 @@
 	     <%= yield %>
 		   <footer>
 		       <div class="row">
-		           <div class="col-lg-12">
+		           <div class="col-lg-10">
 								  <hr/>
 		               <p>Copyright &copy; My Awesome Site 2017</p>
 		           </div>

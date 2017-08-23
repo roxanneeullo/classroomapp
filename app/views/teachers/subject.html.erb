@@ -1,23 +1,21 @@
-
 <div class="container">
-	<div class="row">
-		<div class="col-lg-4 col-sm-6 col-md-offset-2">
-    	<div class="card hovercard">
-      	
-<p>
-  <strong>Subjects:</strong>
-	<table>	
-		 <% @teacher.subjects.each do |subject| %>
-		 <tr>
-	        <td><%= subject.name %></td>
-			
-						</tr>
-			    <% end %>	
-	</table>
-	
-</p>
-
-			</div>
-		</div>
+	<div class="row custyle">
+		<table class="table table-striped custab">
+  		<thead>
+    		<tr>
+      		<th>Subjects Handled</th>
+    		</tr>
+  		</thead>
+  		<tbody>
+				 <% @teacher.subjects.each do |subject| %>
+					<tr>
+						<div class="col-md-3">
+							<td><%= subject.name %></td>
+						</div>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
 	</div>
 </div>
+			

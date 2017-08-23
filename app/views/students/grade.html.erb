@@ -1,24 +1,28 @@
 
 <div class="container">
-	<div class="row">
-		<div class="col-lg-4 col-sm-6 col-md-offset-2">
-    	<div class="card hovercard">
-      	
-<p>
-  <strong>Grades:</strong>
-	
-	<table>
-		<% @student.grades.each do |grade| %>
-			<tr>
-	  		<td><%= grade.score %></td>
-				<td><%= grade.section.name %></td>
-			</tr>
-		<% end %>
-	</table>
-	
-</p>
-
-			</div>
-		</div>
+	<div class="row custyle">
+		<table class="table table-striped custab">
+  		<thead>
+    		<tr>
+      		<th>My Grades</th>
+      		<th>Subject</th>
+    		</tr>
+  		</thead>
+  		<tbody>
+				<% @student.grades.each do |grade| %>
+					<tr>
+						<div class="col-md-3">
+							<td><%= grade.score %></td>
+							 <td><%= grade.section.subject.name %></td>
+						</div>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+		<div class="container">
+		Average:
+		<%= @student.grades.average(:score)  %>
+	</div>
 	</div>
 </div>
+			

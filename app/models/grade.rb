@@ -11,4 +11,8 @@ class Grade < ApplicationRecord
   validates :activity_id, presence: true
   
   validates_uniqueness_of   :activity_id, scope: :student_id
+  
+  def average_rating(student_id)
+    self.class.average(:score).where(:student_id => self.student_id)
+  end
 end
