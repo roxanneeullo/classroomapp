@@ -22,7 +22,7 @@
 		<!-- Navigation -->
 		<div class="container-fluid">
 		  <div class="row">
-		    <div class="col-sm-3 col-lg-2">
+		    <div class="col-sm-2 col-med-2 col-lg-2">
 	  			<nav class="navbar navbar-default navbar-fixed-side" role="navigation">
 	  				<div class="container">
         			<div class="navbar-header">
@@ -116,7 +116,7 @@
 		            
 									<% if current_user.roles_mask == 4%>
 								
-			            <a href="#demo8" class="list-group-item list-group-item" data-toggle="collapse" data-parent="#MainMenu"><i class="fa fa-university" aria-hidden="true"></i>&nbsp;School Shit </a>
+			            <a href="#demo8" class="list-group-item list-group-item" data-toggle="collapse" data-parent="#MainMenu"><i class="fa fa-university" aria-hidden="true"></i>&nbsp;Class Portal </a>
 			             <div class="collapse" id="demo8">
 								
 									<a href="<%= students_subjects_path(user_id: current_user.id) %>"class="list-group-item">&nbsp;&nbsp;<i class="fa fa-id-badge" aria-hidden="true"></i>&nbsp;
@@ -188,7 +188,7 @@
 		<!-- ALERTS -->
 			
 			
-			<div class="col-sm-9 col-lg-10">
+			<div class="col-sm-10 col-med-8 col-lg-8">
 				
 					<div class="container" role="alert" id="success-alert">
 						<% flash.each do |key, value| %>

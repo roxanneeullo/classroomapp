@@ -1,21 +1,9 @@
-<div class="container">
-	<div class="row custyle">
-		<h3 class="text-center">Subjects Handled</h3>
-		<div id="no-more-tables">
-			<table class="col-md-12 table-bordered table-striped table-condensed cf">
-  			<thead class="cf">
-    			<tr>
-      			<th>Subject</th>
-    			</tr>
-  			</thead>
-  			<tbody>
-					 <% @teacher.subjects.each do |subject| %>
-						<tr>
-							<td data-title="Subject"><%= subject.name %></td>
-						</tr>
-					<% end %>
-				</tbody>
-			</table>
-		</div>
-	</div>
+
+<div class="single category">
+	<h3 class="side-title">Subjects Handled</h3>
+	<ul class="list-unstyled">
+		<% @teacher.subjects.each do |subject| %>
+			<li><%= subject.name %></li>
+		<% end %>
+	</ul>
 </div>
