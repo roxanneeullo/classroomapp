@@ -3,7 +3,7 @@ class SubjectsController < ApplicationController
   load_and_authorize_resource
   
   def index
-    @subjects = Subject.all
+    @subjects = Subject.paginate(page: params[:page], per_page: 10)
     @subject = Subject.new
   end
 

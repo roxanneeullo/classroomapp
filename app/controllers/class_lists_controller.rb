@@ -2,7 +2,7 @@ class ClassListsController < ApplicationController
   load_and_authorize_resource
   
   def index
-    @class_lists = ClassList.all
+    @class_lists = ClassList.paginate(page: params[:page], per_page: 10)
     @class_list = ClassList.new
   end
 

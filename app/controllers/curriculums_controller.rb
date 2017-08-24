@@ -2,7 +2,7 @@ class CurriculumsController < ApplicationController
   load_and_authorize_resource
   
   def index
-    @curriculums = Curriculum.all
+    @curriculums = Curriculum.paginate(page: params[:page], per_page: 10)
     @curriculum = Curriculum.new
   end
 

@@ -2,7 +2,7 @@ class BlocksController < ApplicationController
   load_and_authorize_resource
   
   def index
-    @blocks = Block.all
+    @blocks = Block.paginate(page: params[:page], per_page: 10)
     @block = Block.new
     @departments = Department.all
   end
