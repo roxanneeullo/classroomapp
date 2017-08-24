@@ -73,3 +73,5 @@ gem 'paperclip'
 gem 'font-awesome-rails'
 
 gem 'local_time'
+
+ gem 'rails-i18n'

@@ -2,6 +2,14 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   protect_from_forgery with: :exception
   respond_to :html, :xml, :json, :js
+  before_action :set_locale
+ 
+  def set_locale
+    locale = params[:locale].to_s.strip.to_sym
+        I18n.locale = I18n.available_locales.include?(locale) ?
+            locale :
+            I18n.default_locale
+  end
   #check_authorization unless: :activeadmin_resource?
   
  # before_action :configure_permitted_parameters, if: :devise_controller?

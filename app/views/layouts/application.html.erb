@@ -154,12 +154,11 @@
 								<a href="/users/<%= current_user.id %>"class="list-group-item">&nbsp;&nbsp;<i class="fa fa-id-badge" aria-hidden="true"></i>&nbsp;
 									My Profile
 								</a>
-							
-							<a href="<%= destroy_user_session_path %>" class="list-group-item">&nbsp;&nbsp;<i class="fa fa-sign-out" aria-hidden="true"></i>Logout
-
+							<div class="list-group-item">
+								&nbsp;&nbsp;<i class="fa fa-sign-out" aria-hidden="true"></i>
 		 						<%= link_to 'Logout', destroy_user_session_path, 
 									data: { confirm: "Are you sure you want to logout?" }, method: :delete %>
-								</a>
+							</div>
 								</div>
 								
 									</div>
