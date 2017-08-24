@@ -12,13 +12,17 @@
     </div>
   <% end %>
 	
-<h3>new subject</h3>
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<h3>New Subject</h3>
+	<div class=" col-md-9 col-lg-9 "> 
+		<table class="table table-user-information">
+			<tbody>
+				<tr>
+  				<td><%= f.label :name %></td>
+   				<td><%= f.text_field :name, class: "form-control" %></td>
+  			</tr>
+			</tbody>
+		</table>
+		<div class="actions">
+			<%= f.submit "Submit", class: "btn btn-md btn-danger " %>
+		</div>
 	<% end %>

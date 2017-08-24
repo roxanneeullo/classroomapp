@@ -24,9 +24,10 @@ Rails.application.routes.draw do
   
   devise_scope :user do
     get "/teacher-signup" =>"registrations#teacher"
-   post  "/teacher-signup"   => "registrations#create"
-   get "/student-signup" =>"registrations#student"
-  post  "/student-signup"   => "registrations#create"
+    post  "/teacher-signup"   => "registrations#create"
+    get "/student-signup" =>"registrations#student"
+    post  "/student-signup"   => "registrations#create"
+    get "/user-signup" => "registrations#role"
    # get "student_users", to: "users/students#new", as: "new_student_user"
     #post "student_users", to: "users/students#create", as: "student_users"
     #get "student_users/edit", to: "users/students#edit", as: "edit_student_users"

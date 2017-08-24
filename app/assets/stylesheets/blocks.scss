@@ -1,3 +1,44 @@
 // Place all the styles related to the Blocks controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+body {
+  background-color:#fff;
+  -webkit-font-smoothing: antialiased;
+  font: normal 14px arial,sans-serif;
+}
+
+.wrapper {
+    background-color: #339966
+}
+
+h4 {
+    text-align: center;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    color: #FFF;
+}
+h5 {
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: #FFF;
+}
+
+.wrapper1 {
+    background-color: rgb(230,235,218);
+}
+
+.wrapper2 {
+    background-color:  rgb(108, 131, 62);
+}
+
+.col-md-1 {
+    color: #339966;
+    padding-top: 12.5px;
+}
+
+.well {
+    border-color:#d2d2d2;
+    box-shadow:0 1px 0 #cfcfcf;
+    border-radius:3px;
+}

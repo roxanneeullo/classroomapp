@@ -1,43 +1,56 @@
-<h1>Class List</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @class_lists.each do |class_list| %>
-      <tr>
-        <td><%= class_list.student.user.first_name%>&nbsp;<%= class_list.student.user.last_name%></td>
-				<td><%= class_list.section.name%></td>
-				
-				<% if can? :destroy, @class_list %>
-        	<td><%= link_to 'Destroy', class_list, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      	<% end %>
-			</tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
 <%= form_for(@class_list) do |f| %>
-  
-	
-<h3>new class list</h3>
-  <div class="field">
-    <%= f.label :student_id %>		
-		<%= f.collection_select(:student_id, Student.order('id asc'), :id, :id_with_name, { :prompt => 'Select Student' }, class: "form-control", id: "info") %>
-		<label class="hidden_option"><%= :student_id %></label>
+
+	<h3>New Class Listing</h3>
+		<div class=" col-md-9 col-lg-9 "> 
+			<table class="table table-user-information">
+				<tbody>
+					<tr>
+	  				<td><%= f.label :student_id %></td>
+	   				<td><%= f.collection_select(:student_id, Student.order('id asc'), :id, 
+							:id_with_name, { :prompt => 'Select Student' }, class: "form-control", id: "info") %></td>
+						
+	  			</tr>
+					<tr>
+						<td> <%= f.label :section_id %></td>
+						<td><%= f.collection_select(:section_id, Section.order('name asc'), :id, 
+							:name, { :prompt => 'Select Section' }, class: "form-control")  %></td>
+					</tr>
+				</tbody>
+			</table>
+			<div class="actions">
+				<%= f.submit "Submit", class: "btn btn-md btn-danger " %>
+			</div>
 		
-  </div>
-  <div class="field">
-    <%= f.label :section_id %>
-		<%= f.collection_select(:section_id, Section.order('name asc'), :id, :name, { :prompt => 'Select Section' }, class: "form-control")  %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
 	<% end %>
+	
+<div class="container">
+	<div class="row custyle">
+		<h3 class="text-center">Class Listings</h3>
+		<div id="no-more-tables">
+			<table class="col-md-12 table-bordered table-striped table-condensed cf">
+  			<thead class="cf">
+    			<tr>
+						<th>Name</th>
+						<th>Section</th>
+						<th>Delete</th>
+    			</tr>
+  			</thead>
+  			<tbody>
+					 <% @class_lists.each do |class_list| %>
+						<tr>
+							<td data-title="Name"><%= class_list.student.user.first_name%>&nbsp;<%= class_list.student.user.last_name%></td>
+							<td data-title="Section"><%= class_list.section.name%></td>
+			        
+			        <td data-title="Delete"><%= link_to '<button type="button" class = "btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span></button>'.html_safe, class_list, method: :delete, 
+																data: { confirm: 'Are you sure you want to delete this department?' } %></td>
+						</tr>
+						
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+
+		
+		

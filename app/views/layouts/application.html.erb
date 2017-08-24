@@ -98,20 +98,16 @@
 							<% if can? :update, @teaching_load %>
 		            <a href="#demo5" class="list-group-item list-group-item" data-toggle="collapse" data-parent="#MainMenu"><i class="fa fa-graduation-cap" aria-hidden="true"></i>&nbsp;Class</a>
 		             <div class="collapse" id="demo5">
-								<% if can? :update, @teaching_load %>
-								<a href="/teaching_loads" class="list-group-item">
-								&nbsp;&nbsp;<i class="fa fa-list-alt" aria-hidden="true"></i>&nbsp;	Loads
-								</a>
+								<% if can? :update, @section %>	
+								<a href="/sections" class="list-group-item">
+					 				&nbsp;&nbsp;<i class="fa fa-list-alt" aria-hidden="true"></i>&nbsp;Sections</a>
 								<% end %>
 								<% if can? :update, @class_list %>
 								<a href="/class_lists" class="list-group-item">
 					 	  		&nbsp;&nbsp;<i class="fa fa-list-alt" aria-hidden="true"></i>&nbsp;ClassList
 								</a>
 								<% end %>
-								<% if can? :update, @section %>	
-								<a href="/sections" class="list-group-item">
-					 				&nbsp;&nbsp;<i class="fa fa-list-alt" aria-hidden="true"></i>&nbsp;Sections</a>
-								<% end %>	
+								
 							
 							</div>
 								

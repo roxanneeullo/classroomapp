@@ -1,43 +1,58 @@
-<h1>Blocks</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @blocks.each do |block| %>
-      <tr>
-        <td><%= block.name%></td>
-				<td><%= block.department.name %></td>
-				<td><%= link_to 'Show', block %></td>
-				<% if can? :destroy, @blocks %>
-        	<td><%= link_to 'Destroy', block, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      	<% end %>
-			</tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
 <%= form_for(@block) do |f| %>
   
-	
-<h3>new block</h3>
-  <div class="field">
-    <%= f.label :name %>	
-		<%= f.text_field :name %>
-  </div>
-	
-  <div class="field">
-    <%= f.label :department_id %>
-		<%= f.collection_select(:department_id, Department.order('name asc'), :id, :name, { :prompt => 'Select Department' }, class: "form-control")  %>
-  </div>
-  
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+	<h3>New Block</h3>
+		<div class=" col-md-9 col-lg-9 "> 
+			<table class="table table-user-information">
+				<tbody>
+					<tr>
+	  				<td><%= f.label :name %></td>
+	   				<td><%= f.text_field :name, class: "form-control" %></td>
+	  			</tr>
+					<tr>
+						<td> <%= f.label :department_id %></td>
+						<td><%= f.collection_select(:department_id, Department.order('name asc'), :id, :name, { :prompt => 'Select Department' }, class: "form-control")  %></td>
+					</tr>
+				</tbody>
+			</table>
+			<div class="actions">
+				<%= f.submit "Submit", class: "btn btn-md btn-danger " %>
+			</div>
+		
 	<% end %>
+	
+	
+<div class="container">
+	<div class="row custyle">
+		<h3 class="text-center">Blocks</h3>
+		<div id="no-more-tables">
+			<table class="col-md-12 table-bordered table-striped table-condensed cf">
+  			<thead class="cf">
+    			<tr>
+      			<th>ID</th>
+						<th>Name</th>
+						<th>Department</th>
+						<th>View</th>
+						<th>Destroy</th>
+    			</tr>
+  			</thead>
+  			<tbody>
+					<% @blocks.each do |block| %>
+						<tr>
+							<td data-title="ID"><%= block.id %></td>
+							<td data-title="Name"><%= block.name %></td>
+							<td data-title="Department"><%= block.department.name %></td>
+			        <td data-title="View"><%= link_to '<button type="button" class="btn btn-info btn-xs"><span class="glyphicon glyphicon-search"></span></button>'.html_safe, block %></td>
+			        <td data-title="Delete"><%= link_to '<button type="button" class = "btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span></button>'.html_safe, block, method: :delete, 
+																data: { confirm: 'Are you sure you want to delete this department?' } %></td>
+						</tr>
+						
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+
+		
+		

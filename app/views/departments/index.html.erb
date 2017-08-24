@@ -1,26 +1,40 @@
 
-<h1>Departments</h1>
+<div class="container">
+	<div class="row custyle">
+		<h3 class="text-center">Departments</h3>
+		<div class="container">
+			<a href="<%= new_department_path %>" class= "btn btn-sm btn-info "><i class="fa fa-building"  aria-hidden="true"></i> &nbsp;Add Department</a>
+		</div>
+		<br>
+		<div id="no-more-tables">
+			<table class="col-md-12 table-bordered table-striped table-condensed cf">
+  			<thead class="cf">
+    			<tr>
+      			<th>ID</th>
+						<th>Name</th>
+						<th>View</th>
+						<th>Edit</th>
+						<th>Destroy</th>
+    			</tr>
+  			</thead>
+  			<tbody>
+					  <% @departments.each do |department| %>
+						<tr>
+							<td data-title="ID"><%= department.id %></td>
+							<td data-title="Name"><%= department.name %></td>
+			        <td data-title="View"><%= link_to '<button type="button" class="btn btn-info btn-xs"><span class="glyphicon glyphicon-search"></span></button>'.html_safe, department %></td>
+							<td data-title="Edit"><%= link_to '<button type="button" class="btn btn-info btn-xs"><span class="glyphicon glyphicon-edit"></span></button>'.html_safe,  edit_department_path(department)  %></td>
+							
+			        <td data-title="Delete"><%= link_to '<button type="button" class = "btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span></button>'.html_safe, department, method: :delete, 
+																data: { confirm: 'Are you sure you want to delete this department?' } %></td>
+						</tr>
+						
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @departments.each do |department| %>
-      <tr>
-        <td><%= department.name %></td>
-        <td><%= link_to 'Show', department %></td>
-        <td><%= link_to 'Edit', edit_department_path(department) %></td>
-        <td><%= link_to 'Destroy', department, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Department', new_department_path %>
+		
+		

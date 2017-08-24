@@ -27,6 +27,9 @@ include Devise::Controllers::Helpers
     respond_with self.resource
   end  
   
+  def role
+  end
+  
   def create
    super
   end

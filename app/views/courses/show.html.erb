@@ -1,19 +1,13 @@
-<p>
-  <strong>Name:</strong>
-  <%= @course.name %>
-</p>
 
-<p>
-  <strong>Subjects:</strong>
-</p>
-<table>	
-	 <% @course.subjects.each do |subject| %>
-	 <tr>
-        <td><%= subject.name %></td>
-			
-					</tr>
-		    <% end %>
-</table>
+<div class="single category">
+	<h3 class="side-title">Subjects required in <%= @course.name %></h3>
+	<ul class="list-unstyled">
+		<% @course.subjects.each do |subject| %>
+			<li><%= subject.name %></li>
+		<% end %>
+	</ul>
+</div>
+
 
 <%= link_to 'Edit', edit_course_path(@course) %> |
 <%= link_to 'Back', courses_path %>

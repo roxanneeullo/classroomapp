@@ -1,22 +1,39 @@
 
-<p>
-  <strong>Name:</strong>
-  <%= @department.name %>
-</p>
-
-<p>
-  <strong>Teachers:</strong>
- 
-</p>
-
-<table>	
-	 <% @department.teachers.each do |teacher| %>
-	 <tr>
-        <td><%= teacher.user.first_name %>&nbsp;<%= teacher.user.last_name %></td>
-			
-					</tr>
-		    <% end %>
-</table>
-
-<%= link_to 'Edit', edit_department_path(@department) %> |
-<%= link_to 'Back', departments_path %>
+<div class="container">
+	<div class="row">
+ 		<div class="col-md-offset-1 col-md-8">
+    	<div class="wrapper2">
+      	<span class="group">     
+        	<h4><i class="fa fa-users"></i> Teachers in the <%= @department.name %></h4>
+				</span>
+    	</div>
+   	<div class="well">
+			<table class="table table-striped custab"> 
+	  		<tbody>
+	   			<% if @department.teachers.each do |teacher| %>
+					<div class="col-md-3">
+	      			<tr>
+								<td>
+									<div class="card hovercard2">
+					      		<div class="cardheader">
+										</div>
+										<div class="avatar">
+											<a href="/teachers/<%= teacher.id %>"><%= image_tag teacher.user.avatar.url(:thumb) %></a>
+										</div>
+									</div>
+								</td>
+	        			<td>
+									<a class="post" href="/teachers/<%= teacher.id %>">
+										<%= teacher.user.first_name %>&nbsp;<%= teacher.user.last_name %>
+									</a>
+								</td>
+	      			</tr>
+							<% end.empty? %>
+							<td><strong>No Teachers.</strong></td>
+						<% end %>
+					</div>
+	  		</tbody>
+			</table>
+    </div>
+  </div>
+</div>
