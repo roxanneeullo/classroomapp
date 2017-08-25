@@ -1,5 +1,4 @@
 class CommentsController < ApplicationController
- # before_action :set_activity
   
   def index
     @activity = Activity.find(params[:id])
@@ -25,12 +24,14 @@ class CommentsController < ApplicationController
     flash[:success] = "Comment deleted :("
     redirect_to :back
   end
+  
   private
+  
   def set_comment
-    @acomment = Comment.find(params[:id])
+    @comment = Comment.find(params[:id])
   end
+  
   def comment_params
     params.require(:comment).permit(:user_id, :context, :activity_id)
   end
-
 end

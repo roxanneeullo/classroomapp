@@ -6,13 +6,11 @@ class ApplicationController < ActionController::Base
  
   def set_locale
     locale = params[:locale].to_s.strip.to_sym
-        I18n.locale = I18n.available_locales.include?(locale) ?
-            locale :
-            I18n.default_locale
+      I18n.locale = I18n.available_locales.include?(locale) ?
+        locale :
+        I18n.default_locale
   end
-  #check_authorization unless: :activeadmin_resource?
   
- # before_action :configure_permitted_parameters, if: :devise_controller?
   rescue_from CanCan::AccessDenied do |exception|
     respond_to do |format|
       format.json { head :forbidden }
@@ -31,18 +29,18 @@ class ApplicationController < ActionController::Base
    
   private
   def authenticate_active_admin_user!
-      authenticate_user!
-      unless current_user.has_role? :admin
-        flash[:alert] = "Unauthorized Access!"
-        redirect_to root_path
-      end
+    authenticate_user!
+    unless current_user.has_role? :admin
+      flash[:alert] = "Unauthorized Access!"
+      redirect_to root_path
     end
+  end
     
-    def after_sign_in_path_for(resource_or_scope)
-        if current_user.has_role? :admin
-          admin_dashboard_path
-        else
-          root_path
-        end
+  def after_sign_in_path_for(resource_or_scope)
+    if current_user.has_role? :admin
+      admin_dashboard_path
+    else
+      root_path
     end
+  end
 end

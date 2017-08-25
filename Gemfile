@@ -58,24 +58,26 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-gem 'devise'
+gem 'devise', '~> 4.3.0'
 
-gem 'cancancan'
+gem 'cancancan', '~> 2.0.0'
 
-gem 'pry-rails'
+gem 'pry-rails', '~>0.3.6'
 
-gem 'faker'
+gem 'faker', '~>1.8.4'
 
-gem 'activeadmin'
+gem 'activeadmin', '~>1.1.0'
 
-gem 'paperclip'
+gem 'paperclip', '~>5.0.0'
 
 gem 'font-awesome-rails'
 
-gem 'local_time'
+gem 'local_time','~>1.0.3'
 
-gem 'rails-i18n'
+gem 'rails-i18n', '~>5.0.4'
  
-gem 'will_paginate'
+gem 'will_paginate', '~>3.1.6'
 
-gem 'will_paginate-bootstrap'
+gem 'will_paginate-bootstrap', '~>1.0.1'
+
+gem 'bootswatch-rails', '~>3.3.5'

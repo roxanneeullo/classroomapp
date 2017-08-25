@@ -1,28 +1,21 @@
 class DepartmentsController < ApplicationController
   before_action :set_department, only: [:show, :edit, :update, :destroy]
   load_and_authorize_resource
-  # GET /departments
-  # GET /departments.json
+  
   def index
     @departments = Department.paginate(page: params[:page], per_page: 10)
   end
 
-  # GET /departments/1
-  # GET /departments/1.json
   def show
   end
 
-  # GET /departments/new
   def new
     @department = Department.new
   end
 
-  # GET /departments/1/edit
   def edit
   end
 
-  # POST /departments
-  # POST /departments.json
   def create
     @department = Department.new(department_params)
 
@@ -35,8 +28,6 @@ class DepartmentsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /departments/1
-  # PATCH/PUT /departments/1.json
   def update
     respond_to do |format|
       if @department.update(department_params)
@@ -49,8 +40,6 @@ class DepartmentsController < ApplicationController
     end
   end
 
-  # DELETE /departments/1
-  # DELETE /departments/1.json
   def destroy
     @department.destroy
       flash[:danger] = "Department removed!"

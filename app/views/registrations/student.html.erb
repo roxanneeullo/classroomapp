@@ -76,7 +76,8 @@
 				</tr>
 				<tr>
 					<td><%= s.label :block_id %></td>
-					<td><%= s.grouped_collection_select(:block_id, Department.order(:name), :blocks, :name, :id, :name, { :prompt => 'Select Block'}, class: "form-control")  %></td>
+					<td><%= s.grouped_collection_select(:block_id, Department.order(:name), :blocks, :name, 
+						:id, :name, { :prompt => 'Select Block'}, class: "form-control")  %></td>
 				</tr>
 				<% end %>
 			</tbody>

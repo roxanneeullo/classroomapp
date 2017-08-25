@@ -1,56 +1,55 @@
-
-<%= form_for(@curriculum) do |f| %>
-	<h3>New Curriculum</h3>
-		<div class=" col-md-9 col-lg-9 "> 
-			<table class="table table-user-information">
-				<tbody>
-					<tr>
-	  				<td><%= f.label :course_id %></td>
-	   				<td><%= f.collection_select(:course_id, Course.order('name asc'), :id, 
+<h3>New Curriculum</h3>
+<div class=" col-md-9 col-lg-9 "> 
+	<%= form_for(@curriculum) do |f| %>
+		<table class="table table-user-information">
+			<tbody>
+				<tr>
+	  			<td><%= f.label :course_id %></td>
+	   			<td><%= f.collection_select(:course_id, Course.order('name asc'), :id, 
 							:name, { :prompt => 'Select Course', :required => true }, class: "form-control")  %></td>
-	  			</tr>
-					<tr>
-						<td> <%= f.label :subject_id %></td>
-						<td>
-		<%= f.collection_select(:subject_id, Subject.order('name asc'), :id, :name, { :prompt => 'Select Subject' , :required => true}, { class: "form-control" })  %></td>
-					</tr>
-				</tbody>
-			</table>
-			<div class="actions">
-				<%= f.submit "Submit", class: "btn btn-md btn-danger " %>
-			</div>
-		
+	  		</tr>
+				<tr>
+					<td><%= f.label :subject_id %></td>
+					<td><%= f.collection_select(:subject_id, Subject.order('name asc'), 
+							:id, :name, { :prompt => 'Select Subject' , :required => true}, { class: "form-control" }) %>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<div class="actions">
+			<%= f.submit "Submit", class: "btn btn-md btn-danger " %>
+		</div>
 	<% end %>
-	
-	
-<div class="container">
-	<div class="row custyle">
-		<h3 class="text-center">Curriculums</h3>
-		<div id="no-more-tables">
-			<table class="col-md-10 col-sm-9 col-lg-10 table-bordered table-striped table-condensed cf">
-  			<thead class="cf">
-    			<tr>
-      			<th>Course</th>
-						<th>Subject</th>
-						<th>Destroy</th>
-    			</tr>
-  			</thead>
-  			<tbody>
-					<% @curriculums.each do |curriculum| %>
-						<tr>
-							<td data-title="ID"><%= curriculum.course.name%></td>
-							<td data-title="Name"><%= curriculum.subject.name%></td>
-			        <td data-title="Delete"><%= link_to '<button type="button" class = "btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span></button>'.html_safe, curriculum, method: :delete, 
-																data: { confirm: 'Are you sure you want to delete this department?' } %></td>
-						</tr>
-						
-					<% end %>
-				</tbody>
-			</table>
+	<div class="container">
+		<div class="row custyle">
+			<h3 class="text-center">Curriculums</h3>
+			<div id="no-more-tables">
+				<table class="col-md-10 col-sm-9 col-lg-10 table-bordered table-striped table-condensed cf">
+  				<thead class="cf">
+    				<tr>
+      				<th>Course</th>
+							<th>Subject</th>
+							<th>Manage</th>
+    				</tr>
+  				</thead>
+  				<tbody>
+						<% @curriculums.each do |curriculum| %>
+							<tr>
+								<td data-title="ID"><%= curriculum.course.name%></td>
+								<td data-title="Name"><%= curriculum.subject.name%></td>
+			        	<td data-title="Manage"><%= link_to '<button type="button" 
+									class = "btn btn-danger btn-xs">
+										<span class="glyphicon glyphicon-trash"></span></button>'.html_safe, curriculum, 
+										method: :delete, data: { confirm: 'Are you sure you want to delete this department?' } %>
+								</td>
+							</tr>
+						<% end %>
+					</tbody>
+				</table>
+			</div>
 		</div>
 	</div>
 </div>
-
 <div class="col-md-10 col-sm-9 col-lg-10 col-md-offset-3">
 	<%= will_paginate @curriculums, renderer: BootstrapPagination::Rails %>
 </div>

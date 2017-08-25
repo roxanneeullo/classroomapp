@@ -14,9 +14,11 @@
         <td><%= activity.activity_type%></td>
 				<td><%= activity.content%></td>
 				<td><%= activity.section.name%></td>
-				<td><%= activity.teacher.user.first_name%>&nbsp;<%= activity.teacher.user.last_name%></td>
-				<td><i class="fa fa-search-plus" aria-hidden="true"></i><%= link_to 'View', comments_path(:id => activity.id)%></td>
-        
+				<td><%= activity.teacher.user.first_name%>&nbsp;
+					<%= activity.teacher.user.last_name%></td>
+				<td><i class="fa fa-search-plus" aria-hidden="true"></i>
+					<%= link_to 'View', comments_path(:id => activity.id)%>
+				</td>
 				<% if can? :destroy, @activities %>
         	<td><%= link_to 'Destroy', activity, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       	<% end %>
@@ -28,7 +30,6 @@
 <br>
 <%= form_for(@activity) do |f| %>
   
-	
 <h3>New activity</h3>
   <div class="field">
     <%= f.label :activity_type %>
@@ -45,4 +46,4 @@
   <div class="actions">
     <%= f.submit "Add Activity", class: "btn btn-sm btn-info pull-right"%>
   </div>
-	<% end %>
+<% end %>

@@ -1,13 +1,13 @@
 <% if @student.user_id == current_user.id %>
-<ul class="nav nav-tabs">
-	<li class="nav-item">
-  	<a class="nav-link active" href="/users/<%= current_user.id %>"><i class="fa fa-pie-chart"></i>Basic</a>
-  </li>
-	
-  <li class="nav-item">
-    <a class="nav-link" href="<%= student_path(user_id: current_user.id) %>"><i class="fa fa-user-o"></i>Student</a>
-  </li>
-</ul>
+	<ul class="nav nav-tabs">
+		<li class="nav-item">
+  		<a class="nav-link active" href="/users/<%= current_user.id %>"><i class="fa fa-pie-chart"></i>Basic</a>
+  	</li>
+		<li class="nav-item">
+    	<a class="nav-link" href="<%= student_path(user_id: current_user.id) %>">
+			<i class="fa fa-user-o"></i>Student</a>
+  	</li>
+	</ul>
 <% end %>
 
 <div class="container">
@@ -23,7 +23,6 @@
   				<strong><%= @student.user.first_name %>&nbsp;<%= @student.user.last_name %> </strong>
 					<br>
 				</div>
-				
 				<div class=" col-md-9 col-lg-9 "> 
 					<table class="table table-user-information">
 						<tbody>

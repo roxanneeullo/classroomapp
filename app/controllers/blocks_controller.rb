@@ -6,18 +6,13 @@ class BlocksController < ApplicationController
     @block = Block.new
     @departments = Department.all
   end
-
-  # GET /courses/1
-  # GET /courses/1.json
+  
   def show
   end
 
-  # GET /courses/1/edit
   def edit
   end
 
-  # POST /courses
-  # POST /courses.json
   def create
     @block = Block.create(block_params)
     if @block.save
@@ -29,8 +24,6 @@ class BlocksController < ApplicationController
     end
   end
 
-  # PATCH/PUT /courses/1
-  # PATCH/PUT /courses/1.json
   def update
     respond_to do |format|
       if @block.update(block_params)
@@ -43,8 +36,6 @@ class BlocksController < ApplicationController
     end
   end
 
-  # DELETE /courses/1
-  # DELETE /courses/1.json
   def destroy
     @block.destroy
     flash[:danger] = "Block successfully abolished!"

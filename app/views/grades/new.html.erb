@@ -11,7 +11,6 @@
       <th colspan="3"></th>
     </tr>
   </thead>
-
   <tbody>
     <% @grades.each do |grade| %>
       <tr>
@@ -32,7 +31,6 @@
 
 <%= form_for(@grade) do |f| %>
   
-	
 <h3>Add Grade</h3>
   	<%= f.hidden_field :section_id, value: @section.id %>
   	<%= f.hidden_field :teacher_id, value: @teacher.id %>
@@ -45,8 +43,7 @@
     <%= f.label :activity_id %>		
 		<%= f.collection_select(:activity_id, Activity.where(section_id: params[:section_id]), :id, :content, { :prompt => 'Select Activity' }, class: "form-control")  %>
   </div>
-  
   <div class="actions">
     <%= f.submit "Add Grade", class:"btn btn-sm btn-info pull-right" %>
   </div>
-	<% end %>
+<% end %>

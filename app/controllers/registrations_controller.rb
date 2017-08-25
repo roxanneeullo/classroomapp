@@ -1,13 +1,8 @@
 class RegistrationsController < Devise::RegistrationsController
- #include ApplicationHelper
 include Devise::Controllers::Helpers
   before_action :authenticate_user!, :redirect_unless_admin,  only: [:new, :create]
-  #prepend_before_filter :authenticate_scope!, :only => [:teacher]
-  #before_filter :configure_sign_in_params, only: [:create]
-  
   skip_before_action :require_no_authentication
-  #before_action :account_update_params
-   respond_to :html, :json
+  respond_to :html, :json
   
    def teacher
      build_resource({})
@@ -72,8 +67,4 @@ include Devise::Controllers::Helpers
         :gender, :birthday, :contact_number, :avatar]
       params.require(resource_name).permit(allow)
     end
-    
-   # def configure_sign_in_params 
-      #  devise_parameter_sanitizer.sanitize(:sign_in)
-   #   end
 end

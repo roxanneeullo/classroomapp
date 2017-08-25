@@ -11,7 +11,6 @@ class Teacher < ApplicationRecord
   
   validates :user_id, uniqueness: true
   validates :department, presence: true
- # validates :block, uniqueness: true
   validates_uniqueness_of :block, :allow_blank => true
 
   def id_with_name

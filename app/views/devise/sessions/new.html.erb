@@ -6,8 +6,7 @@
 		<div class="col-md-8 col-sm-9 col-lg-8">
     	<h1 class="text-center login-title">Log in</h1>
       	<div class="account-wall">
-        	<img class="profile-img" src= "/images/thumb/missing.jpg"
-                    alt="">
+        	<img class="profile-img" src= "/images/thumb/missing.jpg" alt="">
 					<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 						<form class="form-signin">
  							<div class="container">
@@ -30,11 +29,10 @@
 						</form>
 					<% end %>
 				 <div class="container">
-  				<%= render "devise/shared/links" %>
+  				 <%= render "devise/shared/links" %>
          </div>
-			 </div><!--account-->
-    	</div><!--login -->
-		</div><!-- col-->
-	</div><!-- row-->
-</div><!-- jumb-->
-
+			 </div>
+    	</div>
+		</div>
+	</div>
+</div>

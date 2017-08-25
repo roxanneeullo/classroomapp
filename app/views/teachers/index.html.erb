@@ -1,9 +1,9 @@
-
 <div class="container">
 	<div class="row custyle">
 		<h3 class="text-center">Teachers</h3>
 		<div class="container">
-			<a href="<%= user_signup_path %>" class= "btn btn-sm btn-info "><i class="fa fa-user-plus"  aria-hidden="true"></i> &nbsp;Add User</a>
+			<a href="<%= user_signup_path %>" class= "btn btn-sm btn-info ">
+				<i class="fa fa-user-plus"  aria-hidden="true"></i> &nbsp;Add User</a>
 		</div>
 		<br>
 		<div id="no-more-tables">
@@ -17,9 +17,7 @@
 						<th>Department</th>
 						<th>Status</th>
 						<th>Block</th>
-						<th>View</th>
-						<th>Edit</th>
-						<th>Delete</th>
+						<th>Manage</th>
     			</tr>
   			</thead>
   			<tbody>
@@ -38,11 +36,15 @@
 									<%= teacher.block.name %>
 								<% end%>	
 							</td>
-			        <td data-title="View"><%= link_to '<button type="button" class="btn btn-info btn-xs"><span class="glyphicon glyphicon-search"></span></button>'.html_safe, teacher %></td>
-							<td data-title="Edit"><%= link_to '<button type="button" class="btn btn-info btn-xs"><span class="glyphicon glyphicon-edit"></span></button>'.html_safe, edit_teacher_path(teacher) %></td>
-							
-			        <td data-title="Delete"><%= link_to '<button type="button" class = "btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span></button>'.html_safe, teacher, method: :delete, 
-																data: { confirm: 'Are you sure you want to delete this teacher?' } %></td>
+			        <td data-title="Manage"><%= link_to '<button type="button" class="btn btn-info btn-xs">
+								<span class="glyphicon glyphicon-search"></span></button>'.html_safe, teacher %>
+								<%= link_to '<button type="button" class="btn btn-info btn-xs">
+								<span class="glyphicon glyphicon-edit"></span></button>'.html_safe, 
+								edit_teacher_path(teacher) %>
+								<%= link_to '<button type="button" class = "btn btn-danger btn-xs">
+								<span class="glyphicon glyphicon-trash"></span></button>'.html_safe, teacher, method: :delete, 
+																data: { confirm: 'Are you sure you want to delete this teacher?' } %>
+							</td>
 						</tr>
 					<% end %>
 				</tbody>

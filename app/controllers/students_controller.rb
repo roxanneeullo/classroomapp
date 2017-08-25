@@ -1,39 +1,34 @@
 class StudentsController < ApplicationController
   before_action :set_student, only: [:show, :edit, :update, :destroy]
   load_and_authorize_resource
-  # GET /students
-  # GET /students.json
+  
   def index
     @students = Student.paginate(page: params[:page], per_page: 10)
   end
 
   
   def show
-  
   end
   
   def subject
-      @student = Student.where(user_id: params[:user_id]).first
+    @student = Student.where(user_id: params[:user_id]).first
   end
 
   def schedule
-      @student = Student.where(user_id: params[:user_id]).first
+    @student = Student.where(user_id: params[:user_id]).first
   end
   
   def grade
     @student = Student.where(user_id: params[:user_id]).first
   end
-  # GET /students/new
+  
   def new
     @student = Student.new
   end
 
-  # GET /students/1/edit
   def edit
   end
 
-  # POST /students
-  # POST /students.json
   def create
     @student = Student.new(student_params)
 
@@ -48,8 +43,6 @@ class StudentsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /students/1
-  # PATCH/PUT /students/1.json
   def update
     respond_to do |format|
       if @student.update(student_params)

@@ -10,19 +10,19 @@
       </ul>
     </div>
   <% end %>
-	
-	
-	
-		<div class=" col-md-9 col-lg-9 "> 
-			<table class="table table-user-information">
-				<tbody>
-					<tr>
-						<td> <%= f.label :user_id %></td>
-	  				<td><%= f.collection_select(:user_id, User.order('username asc'), :id, :username, { :prompt => 'Select User' }, class: "form-control")  %></td>
+
+	<div class=" col-md-9 col-lg-9 "> 
+		<table class="table table-user-information">
+			<tbody>
+				<tr>
+					<td> <%= f.label :user_id %></td>
+	  			<td><%= f.collection_select(:user_id, User.order('username asc'), :id, 
+						:username, { :prompt => 'Select User' }, class: "form-control")  %></td>
 					</tr>
 					<tr>
 				    <td><%= f.label :department_id %></td>
-						<td><%= f.collection_select(:department_id, Department.order('name asc'), :id, :name, { :prompt => 'Select Department' }, class: "form-control")  %></td>
+						<td><%= f.collection_select(:department_id, Department.order('name asc'), :id, 
+							:name, { :prompt => 'Select Department' }, class: "form-control")  %></td>
 				  </tr>
 					<tr>
 						<td><%= f.label :status %></td>
@@ -31,7 +31,8 @@
 					</tr>
 					<tr>
 	    			<td><%= f.label :block_id %></td>
-						<td><%= f.collection_select(:block_id, Block.order('name asc'), :id, :name, { :prompt => 'Select Block' }, class: "form-control")  %></td>
+						<td><%= f.collection_select(:block_id, Block.order('name asc'), :id, 
+							:name, { :prompt => 'Select Block' }, class: "form-control")  %></td>
 					</tr>
 				</tbody>
 			</table>

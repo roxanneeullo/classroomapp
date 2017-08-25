@@ -6,20 +6,14 @@ class CurriculumsController < ApplicationController
     @curriculum = Curriculum.new
   end
 
-  # GET /courses/1
-  # GET /courses/1.json
   def show
      @curriculum = Curriculum.find(params[:id])
   end
 
-  # GET /courses/1/edit
   def edit
   end
 
-  # POST /courses
-  # POST /courses.json
   def create
-    #params[:review][:subject_ids].delete("")
     @curriculum = Curriculum.new(curriculum_params)
    
       if @curriculum.save
@@ -30,11 +24,7 @@ class CurriculumsController < ApplicationController
         redirect_to :back
     end
   end
-  
 
-
-  # PATCH/PUT /courses/1
-  # PATCH/PUT /courses/1.json
   def update
     respond_to do |format|
       if @curriculum.update(curriculum_params)
@@ -47,8 +37,6 @@ class CurriculumsController < ApplicationController
     end
   end
 
-  # DELETE /courses/1
-  # DELETE /courses/1.json
   def destroy
     @curriculum.destroy
     flash[:danger] = "Subject removed from Course!"

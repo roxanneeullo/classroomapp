@@ -6,17 +6,6 @@ class ClassListsController < ApplicationController
     @class_list = ClassList.new
   end
 
-  # GET /courses/1
-  # GET /courses/1.json
-  def show
-  end
-
-  # GET /courses/1/edit
-  def edit
-  end
-
-  # POST /courses
-  # POST /courses.json
   def create
     @class_list = ClassList.create(class_list_params)
       if @class_list.save
@@ -28,8 +17,6 @@ class ClassListsController < ApplicationController
       end
   end
 
-  # PATCH/PUT /courses/1
-  # PATCH/PUT /courses/1.json
   def update
     respond_to do |format|
       if @class_list.update(class_list_params)
@@ -42,8 +29,6 @@ class ClassListsController < ApplicationController
     end
   end
 
-  # DELETE /courses/1
-  # DELETE /courses/1.json
   def destroy
     @class_list.destroy
     flash[:danger] = "Student removed from class!"

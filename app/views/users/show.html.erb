@@ -1,14 +1,17 @@
 <ul class="nav nav-tabs">
   <li class="nav-item">
-    <a class="nav-link active" href="/users/<%= current_user.id %>"><i class="fa fa-pie-chart"></i>Basic</a>
+    <a class="nav-link active" href="/users/<%= current_user.id %>">
+			<i class="fa fa-pie-chart"></i>Basic</a>
   </li>
 	<% if current_user.roles_mask == 4%>
   <li class="nav-item">
-    <a class="nav-link" href="<%= student_path(user_id: current_user.id) %>"><i class="fa fa-user-o"></i>Student</a>
+    <a class="nav-link" href="<%= student_path(user_id: current_user.id) %>">
+			<i class="fa fa-user-o"></i>Student</a>
   </li>
 	<% elsif current_user.roles_mask == 2%>
   <li class="nav-item">
-    <a class="nav-link" href="<%= teacher_path(user_id: current_user.id) %>"><i class="fa fa-user-o"></i>Teacher</a>
+    <a class="nav-link" href="<%= teacher_path(user_id: current_user.id) %>">
+			<i class="fa fa-user-o"></i>Teacher</a>
   </li>
 	<% end %>
 </ul>
@@ -17,7 +20,8 @@
 	<div class="row">
   	<div class="col-md-5  toppad  pull-right col-md-offset-3 ">
 			<% if can? :update, @user %>
-    	  <a href="<%= edit_user_registration_path(@user) %>" class= "btn btn-sm btn-info "><i class="fa fa-pencil-square-o" aria-hidden="true"></i> &nbsp;Edit Profile</a>
+    	  <a href="<%= edit_user_registration_path(@user) %>" class= "btn btn-sm btn-info ">
+					<i class="fa fa-pencil-square-o" aria-hidden="true"></i> &nbsp;Edit Profile</a>
       	<br>
 			<% end%>
 		</div>
@@ -25,16 +29,13 @@
     	<div class="card hovercard">
       	<div class="cardheader">
 				</div>
-
 				<div class="avatar">
 					<%= image_tag @user.avatar.url(:thumb) %>
 				</div>
-				
 				<div class="title">
   				<strong><%= @user.first_name %>&nbsp;<%= @user.last_name %> </strong>
 					<br>
 				</div>
-				
 				<div class=" col-md-9 col-lg-9 "> 
 					<table class="table table-user-information">
 						<tbody>

@@ -3,28 +3,13 @@ class ActivitiesController < ApplicationController
   
   def index
     @activities = Activity.where(section_id: params[:id])
-     #@activity = 
     @teacher = Teacher.where(user_id: params[:user_id]).first
-   # @student = Student.where(user_id: params[:user_id]).first
     @section = Section.find(params[:id])
     @activity = Activity.new
-   # @teachers = Teacher.all
   end
 
   def show
-   # @comments = Comment.all
     @comments = Comment.all
-     
-    #@comment = current_user.comments.create(comment_params)
-
-     # if @comment.save
-      #  redirect_to :back
-       # flash[:notice] = "Post created!"
-    #  else
-        
-     #  redirect_to :back
-      #  flash[:notice] = "Post cannot be blank!"
-    #  end
   end
 
   def edit

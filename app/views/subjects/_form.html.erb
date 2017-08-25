@@ -1,10 +1,8 @@
-
 <%= form_for(subject) do |f| %>
   <% if subject.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
-
-      <ul>
+			<ul>
       	<% subject.errors.full_messages.each do |message| %>
         	<li><%= message %></li>
       	<% end %>
@@ -12,16 +10,16 @@
     </div>
   <% end %>
 	
-<h3>New Subject</h3>
-	<div class=" col-md-9 col-lg-9 "> 
-		<table class="table table-user-information">
-			<tbody>
-				<tr>
-  				<td><%= f.label :name %></td>
-   				<td><%= f.text_field :name, class: "form-control" %></td>
-  			</tr>
-			</tbody>
-		</table>
+	<h3>New Subject</h3>
+		<div class=" col-md-9 col-lg-9 "> 
+			<table class="table table-user-information">
+				<tbody>
+					<tr>
+  					<td><%= f.label :name %></td>
+   					<td><%= f.text_field :name, class: "form-control" %></td>
+  				</tr>
+				</tbody>
+			</table>
 		<div class="actions">
 			<%= f.submit "Submit", class: "btn btn-md btn-danger " %>
 		</div>

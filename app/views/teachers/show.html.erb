@@ -1,10 +1,12 @@
 <% if @teacher.user_id == current_user.id %>
 <ul class="nav nav-tabs">
   <li class="nav-item">
-    <a class="nav-link active" href="/users/<%= current_user.id %>"><i class="fa fa-pie-chart"></i>Basic</a>
+    <a class="nav-link active" href="/users/<%= current_user.id %>">
+			<i class="fa fa-pie-chart"></i>Basic</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="<%= teacher_path(user_id: current_user.id) %>"><i class="fa fa-user-o"></i>Teacher</a>
+    <a class="nav-link" href="<%= teacher_path(user_id: current_user.id) %>">
+			<i class="fa fa-user-o"></i>Teacher</a>
   </li>
 </ul>
 <% end %>
@@ -22,7 +24,6 @@
   				<strong><%= @teacher.user.first_name %>&nbsp;<%= @teacher.user.last_name %> </strong>
 					<br>
 				</div>
-				
 				<div class=" col-md-9 col-lg-9 "> 
 					<table class="table table-user-information">
 						<tbody>
