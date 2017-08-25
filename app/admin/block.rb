@@ -16,11 +16,9 @@ ActiveAdmin.register Block do
       f.input :department
       f.input :created_at
       f.input :updated_at
-    
    
     end
     f.actions
   end
-
 
 end

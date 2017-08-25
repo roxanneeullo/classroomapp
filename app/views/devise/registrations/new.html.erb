@@ -50,7 +50,7 @@
 				</tr>
 				<tr>
 					<td><%= f.label :birthday %></td>
-					<td><%= f.date_select :birthday, class: "form-control" %></td>
+					<td><%= f.date_select :birthday, {start_year: 1960 }, {class: "form-control"} %></td>
 				</tr>
 				<tr>
 					<td><%= f.label :contact_number %></td>
